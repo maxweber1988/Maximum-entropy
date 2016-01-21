@@ -1,9 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import time
-from max_ent_functions import calc_A, calc_G, calc_K, root_finding_newton, root_finding_diag
+from max_ent_functions import calc_A, calc_G, calc_K, root_finding_newton, root_finding_diag,find_Lambda
 plt.rc('image',interpolation='nearest',origin='lower')
-# dummy change
+
 # define parameters
 dtau = 0.125
 dw = 0.25
@@ -57,10 +57,10 @@ for i in xrange(1):
 		delta_u.append(np.abs(np.sum(u-u_sol)))
 		u=u_sol
 	A_est = m * np.exp(np.dot(U_s, u_sol)) * dw
-
 	S = np.sum(A_est - m - np.log(A_est / m))
 	L = 0.5 * np.sum((G_noisy - np.dot(K_s,A_est))**2/np.diagonal(Cov)**2)
 	Q = alpha * S - L
+	Lambda = find_Lambda(A=A_est,u = u_sol, alpha = alpha,V = V_s, Sigma = Sigma_s, U = U_s, G = G_noisy,Cov = Cov, dw = dw)
 	p_alpha_val = np.prod(np.sqrt(alpha/(alpha+Lambda) * 1./alpha * np.exp(Q)))
 	p_alpha.append(p_alpha_val)
 	delta_A.append(np.sum(np.sqrt((A-A_est)**2)))

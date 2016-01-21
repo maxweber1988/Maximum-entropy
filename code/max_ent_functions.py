@@ -11,17 +11,15 @@ def calc_A(dw,N,peak_indices,peak_width,heights):
 	return res
 
 def calc_K(dw,Nw,dtau,Ntau,beta):
-	res = np.zeros((Ntau+1,Nw))
-	for i in xrange(0,Ntau+1):
+	res = np.zeros((Ntau,Nw))
+	for i in xrange(0,Ntau):
 		for j in xrange(0,Nw):
 			res[i,j] = np.exp(-j * dw * i * dtau) / (1. + np.exp(-beta * (j * dw)))
 	return res
 
-def calc_G(K,A,dw):
-	res = np.dot(K,A*dw)
+def calc_G(K,A):
+	res = np.dot(K,A)
 	return res
-# def integrate_fct(w,mu,sigma,tau,beta):
-# 	return (1.-np.abs(w-mu)/mu)*np.exp(-tau*w)/(1.+np.exp((-beta*w)))#np.exp(-(w-mu)**2/sigma**2)
 
 def root_finding_newton(u, m, alpha, V, Sigma, U, G, Cov, dw):
 	s=len(u)
@@ -41,12 +39,15 @@ def root_finding_newton(u, m, alpha, V, Sigma, U, G, Cov, dw):
 		delta_u = lu_solve(lu_and_piv,F_u)
 		for j in xrange(1000):
 			if np.dot(delta_u.T,np.dot(T,delta_u.T)) > max_val:
-				J = (alpha+j) * np.diag(np.zeros((s))+1) + np.dot(M,T)
+				J = (alpha+j) * np.diag(np.ones((s))) + np.dot(M,T)
 				lu_and_piv = lu_factor(J)
 				delta_u = lu_solve(lu_and_piv,F_u)
 			else:
 				break
+		u_old = u
 		u = u + delta_u
+		if np.abs(np.sum(u-u_old))<1e-10:
+			break
 	return u	
 
 def root_finding_diag(u, m, alpha, V, Sigma, U, G, Cov, dw):
@@ -81,23 +82,4 @@ def root_finding_diag(u, m, alpha, V, Sigma, U, G, Cov, dw):
 				break
 		u = u + delta_u
 	return u
-
-def find_Lambda(A, u, alpha, V, Sigma, U, G, Cov, dw):
-	T_s = np.dot(V,np.dot(Sigma,U.T))
-	f_appr = A
-	inv_cov = (1./np.diagonal(Cov))**2
-	inv_cov_mat = np.diag(inv_cov)
-	dLdF = - inv_cov * (G - np.dot(T_s, f_appr))
-	g = np.dot(Sigma,np.dot(V.T,dLdF))
-	F_u = - alpha * u - g
-	M = np.dot(Sigma,np.dot(V.T,np.dot(inv_cov_mat,np.dot(V,Sigma))))
-	K = np.dot(U.T,np.dot(np.diag(f_appr),U))
-	eig_K, P = np.linalg.eig(K)
-	P_inv = np.linalg.inv(P)
-	O = np.diag(eig_K)
-	O_inv = np.linalg.inv(O)
-	A = np.dot(np.sqrt(O), np.dot(P.T, np.dot(M, np.dot(P, np.sqrt(O)))))
-	eig_A,R = np.linalg.eig(A)
-	Lambda = np.diag(eig_A)
-	return Lambda
 	
