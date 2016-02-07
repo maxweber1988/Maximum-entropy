@@ -7,6 +7,7 @@ from max_ent_functions import calc_A, calc_G, calc_K, root_finding_newton, root_
 plt.rc('image',interpolation='nearest',origin='lower')
 
 # define parameters
+# neu: erst Ntau und Nw festlegen und daraus dtau und dw berechnen
 beta = 10.
 Ntau = 200
 Nw = 200
@@ -18,6 +19,7 @@ m = np.zeros(Nw) + m_value
 mu = np.array([-1.,1.])
 sigma = [1.,2.]
 ampl = [2.,1.]
+# neu: Funktion calc_A berechnet jetzt einen 1D "mixed Gaussian"
 A = calc_A(dw,Nw,mu,sigma,ampl)
 
 plt.plot(A)
@@ -49,12 +51,20 @@ V_s = V[:,0:s]
 Sigma_s = Sigma[0:s,0:s]
 K_s = np.dot(V_s,np.dot(Sigma_s,U_s.T))
 
+# neu: verschiedene alpha Werte führen jetzt zu verschiedenen Ergebnissen !!! ;-)
+# für große alpha Werte sollte jetzt immer m*dw rauskommen
 alpha = .05
+
 # create starting values for u and start root finding recursively
 u=np.zeros(s)+ 1.
+
+# für hohen noise kann es helfen eine hohe Anzahl an Rekursionen zu machen
+# neu: root_finding_diag viel stabiler!!!
+# root_finding_newton ist umverändert
 for j in xrange(100):
 	u_sol= root_finding_diag(u = u,m = m, alpha = alpha, V = V_s, Sigma = Sigma_s,U = U_s, G = G_noisy, Cov = Cov, dw = dw)
 	u = u_sol
+
 # estimated A given solution of root finding
 A_est = m * np.exp(np.dot(U_s, u_sol))*dw
 plt.plot(A,'-x',label='true A')
