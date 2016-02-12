@@ -1,3 +1,4 @@
+from __future__ import print_function
 import numpy as np
 import matplotlib.pyplot as plt
 from max_ent_functions import calc_K, max_likelihood_estimate, root_finding_diag
@@ -27,7 +28,7 @@ Sigma = np.diag(sig_vec)
 
 # find important singular values and reduce dimensions accordingly
 s = len(sig_vec[sig_vec>1e-5])
-print s
+print(s)
 
 U = U_T.T
 U_s = U[:,0:s]

@@ -1,3 +1,4 @@
+from __future__ import print_function
 import numpy as np
 from scipy.linalg import lu_solve,lu_factor
 import matplotlib.pyplot as plt
@@ -21,7 +22,7 @@ def calc_A(dw, Nw, mu, sigma,ampl):
 		raise(IndexError("mu, sigma and ampl have to have the same length"))
 	A = np.zeros((Nw))
 	w = np.arange(-Nw*dw/2.,Nw*dw/2.,dw)
-	for i in xrange(len(mu)):
+	for i in range(len(mu)):
 		A += ampl[i] * np.exp(-((w - mu[i])**2/sigma[i]**2))
 	return A * dw
 
@@ -63,7 +64,6 @@ def root_finding_newton(u, m, alpha, V, Sigma, U, G, Cov, dw):
 	max_iter = 1000
 
 	while diff > 1e-10 and count1 <= max_iter:
-		print count1
 		A_appr = dw * m * np.exp(np.dot(U,u))
 		inv_cov = (1. / np.diagonal(Cov)**2)
 		inv_cov_mat = np.diag(inv_cov)
@@ -77,8 +77,6 @@ def root_finding_newton(u, m, alpha, V, Sigma, U, G, Cov, dw):
 		count2 = 1
 		while np.dot(delta_u.T,np.dot(T,delta_u.T)) > max_val and count2 <= max_iter:
 			J = (alpha+count2*1e10) * np.diag(np.ones((s))) + np.dot(M,T)
-			if count2 == max_iter:
-				print count2
 			lu_and_piv = lu_factor(J)
 			delta_u = lu_solve(lu_and_piv,F_u)
 			count2 +=1
@@ -113,7 +111,6 @@ def max_likelihood_estimate(G,V_singular,U_singular,Sigma_singular):
 	max_iter = 1000
 
 	while diff > 1e-10 and count1 <= max_iter:
-		print count1
 		A_appr = dw * m * np.exp(np.dot(U,u))
 		inv_cov = (1. / np.diagonal(Cov)**2)
 		inv_cov_mat = np.diag(inv_cov)
@@ -127,8 +124,6 @@ def max_likelihood_estimate(G,V_singular,U_singular,Sigma_singular):
 		count2 = 1
 		while np.dot(delta_u.T,np.dot(T,delta_u.T)) > max_val and count2 <= max_iter:
 			J = (alpha+count2*1e10) * np.diag(np.ones((s))) + np.dot(M,T)
-			if count2 == max_iter:
-				print count2
 			lu_and_piv = lu_factor(J)
 			delta_u = lu_solve(lu_and_piv,F_u)
 			count2 +=1
@@ -161,11 +156,10 @@ def root_finding_diag(u, m, alpha, V, Sigma, U, G, Cov, dw):
 	count1 = 1
 	u_old = u
 	while diff > 1e-10 and count1 < max_iter1:
-		# print count1
 		f_appr = dw * m * np.exp(np.dot(U,u))
 		if np.any(np.isnan(f_appr)):
-			print "NAN values encountered in f"
-			print f_appr
+			print( "NAN values encountered in f")
+			print (f_appr)
 			time.sleep(5)
 			u = u_old + np.random.normal(0.,1.,len(u))
 			continue
@@ -177,14 +171,14 @@ def root_finding_diag(u, m, alpha, V, Sigma, U, G, Cov, dw):
 		M = np.dot(Sigma,np.dot(V.T,np.dot(inv_cov_mat,np.dot(V,Sigma))))
 		K = np.dot(U.T,np.dot(np.diag(f_appr),U))
 		if np.any(np.isnan(K)):
-			print "Nan values encountered in K"
+			print ("Nan values encountered in K")
 			u = u_old + np.random.normal(0.,1.,len(u))
 			continue
 		eig_K, P = np.linalg.eig(K)
 		O = np.diag(eig_K)
 		# neu: teilweise negative Eigenwerte von K die dann in A Probleme machen! (ka woher die kommen bis jetzt)
 		if len(eig_K[eig_K<0.]):
-			print eig_K
+			print (eig_K)
 		A = np.dot(np.sqrt(O), np.dot(P.T, np.dot(M, np.dot(P, np.sqrt(O)))))
 		eig_A,R = np.linalg.eig(A)
 		Lambda = np.diag(eig_A)
@@ -197,7 +191,7 @@ def root_finding_diag(u, m, alpha, V, Sigma, U, G, Cov, dw):
 		Y_inv_delta_u = np.zeros(len(c_vec))
 
 		# neu: keine LU Zerlegung mehr, da B diagonal ist.
-		for i in xrange(len(c_vec)):
+		for i in range(len(c_vec)):
 			Y_inv_delta_u[i] = c_vec[i] / B[i,i]
 
 		delta_u = (-alpha * u - g - np.dot(M,np.dot(Y_inv.T,Y_inv_delta_u)))/(alpha)
@@ -206,16 +200,16 @@ def root_finding_diag(u, m, alpha, V, Sigma, U, G, Cov, dw):
 			B = (alpha+count2*1.)*np.diag(np.ones((s))) + Lambda
 			c_vec = -alpha * np.dot(Y_inv,u)-np.dot(Y_inv,g)
 			Y_inv_delta_u = np.zeros(len(c_vec))
-			for j in xrange(len(c_vec)):
+			for j in range(len(c_vec)):
 				Y_inv_delta_u[j] = c_vec[j] / B[j,j]
 			delta_u = (-alpha * u - g - np.dot(M,np.dot(Y_inv.T,Y_inv_delta_u)))/(alpha+count2 * 1.)
 			count2 += 1
-		print count2
+		print(count2)
 		u_old = u
 		u = u + delta_u
 		diff = np.abs(np.sum(u-u_old))
 		count1 += 1
-	print count1
+	print(count1)
 	return u	
 	
 def calc_p_alpha(A,alpha,Cov,G,K,m):
@@ -224,7 +218,7 @@ def calc_p_alpha(A,alpha,Cov,G,K,m):
 	mat = np.dot(np.diag(np.sqrt(A)),np.dot(d2_chi,np.diag(np.sqrt(A))))
 	eig,eigv = np.linalg.eig(mat)
 	S = np.sum(A - m - A * np.log(A / m))
-	print"S = ", S
+	print("S = ", S)
 	L = 0.5 * np.sum((G - np.dot(K,A))**2/np.diagonal(Cov)**2)
 	Q = alpha * S - L
 	p_alpha_val = np.prod(np.sqrt(alpha/(alpha+eig)) * 1./alpha * np.exp(Q))

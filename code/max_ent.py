@@ -1,3 +1,4 @@
+from __future__ import print_function
 import numpy as np
 import matplotlib.pyplot as plt
 import time
@@ -36,7 +37,7 @@ G = np.dot(K,A)
 np.random.seed(seed)
 std = G * 1e-5
 G_noisy = G + np.random.normal(0.,std,len(G))
-print np.amin(G),np.amin(G_noisy)
+print(np.amin(G),np.amin(G_noisy))
 plt.figure()
 plt.plot(G_noisy)
 plt.show()
@@ -50,7 +51,7 @@ Sigma = np.diag(sig_vec)
 # find important singular values and reduce dimensions accordingly
 s = len(sig_vec[sig_vec>1e-1])
 
-print s
+print(s)
 
 U = U_T.T
 U_s = U[:,0:s]
@@ -65,7 +66,7 @@ alpha = 1e-3
 # create starting values for u and start root finding recursively
 u=np.zeros(s)+ 1.
 
-for j in xrange(10):
+for j in range(10):
 	u_sol= root_finding_diag(u = u,m = m, alpha = alpha, V = V_s, Sigma = Sigma_s,U = U_s, G = G_noisy, Cov = Cov, dw = dw)
 	u = u_sol
 plt.plot(u)
