@@ -1,6 +1,7 @@
 import numpy as np
 from scipy.linalg import lu_solve,lu_factor
 import matplotlib.pyplot as plt
+import time
 
 def calc_A(dw, Nw, mu, sigma,ampl):
 	"""
@@ -19,7 +20,7 @@ def calc_A(dw, Nw, mu, sigma,ampl):
 	if len(mu) != len(sigma) & len(mu) != len(ampl):
 		raise(IndexError("mu, sigma and ampl have to have the same length"))
 	A = np.zeros((Nw))
-	w = np.arange(-Nw*dw/2.,Nw*dw/2.+dw,dw)
+	w = np.arange(-Nw*dw/2.,Nw*dw/2.,dw)
 	for i in xrange(len(mu)):
 		A += ampl[i] * np.exp(-((w - mu[i])**2/sigma[i]**2))
 	return A * dw
@@ -154,16 +155,20 @@ def root_finding_diag(u, m, alpha, V, Sigma, U, G, Cov, dw):
 	max_val = np.sum(m)
 	T_s = np.dot(V,np.dot(Sigma,U.T))
 	diff = 1.
-	# neu: zwei verschiedene max_iter Werte, da es glaub ich besser ist für den Levenberg Marquardt parameter einen kleineren Wert zu nehmen und dafür mehr Iterationen
-	# in Kauf zu nehmen. Mir ist aber immer noch nicht so ganz klar wieso wir den so groß wählen müssen.(Pollet hat ja iwas von 1e-5 oder so gesagt)
+	
 	max_iter1 = 1000
 	max_iter2 = 10000
 	count1 = 1
+	u_old = u
 	while diff > 1e-10 and count1 < max_iter1:
 		# print count1
 		f_appr = dw * m * np.exp(np.dot(U,u))
 		if np.any(np.isnan(f_appr)):
-			return np.zeros(u.shape)
+			print "NAN values encountered in f"
+			print f_appr
+			time.sleep(5)
+			u = u_old + np.random.normal(0.,1.,len(u))
+			continue
 		inv_cov = (1. / np.diagonal(Cov)**2)
 		inv_cov_mat = np.diag(inv_cov)
 		dLdF = - inv_cov * (G - np.dot(T_s, f_appr))
@@ -173,7 +178,8 @@ def root_finding_diag(u, m, alpha, V, Sigma, U, G, Cov, dw):
 		K = np.dot(U.T,np.dot(np.diag(f_appr),U))
 		if np.any(np.isnan(K)):
 			print "Nan values encountered in K"
-			return np.zeros(u.shape)
+			u = u_old + np.random.normal(0.,1.,len(u))
+			continue
 		eig_K, P = np.linalg.eig(K)
 		O = np.diag(eig_K)
 		# neu: teilweise negative Eigenwerte von K die dann in A Probleme machen! (ka woher die kommen bis jetzt)
@@ -204,10 +210,12 @@ def root_finding_diag(u, m, alpha, V, Sigma, U, G, Cov, dw):
 				Y_inv_delta_u[j] = c_vec[j] / B[j,j]
 			delta_u = (-alpha * u - g - np.dot(M,np.dot(Y_inv.T,Y_inv_delta_u)))/(alpha+count2 * 1.)
 			count2 += 1
+		print count2
 		u_old = u
 		u = u + delta_u
 		diff = np.abs(np.sum(u-u_old))
 		count1 += 1
+	print count1
 	return u	
 	
 def calc_p_alpha(A,alpha,Cov,G,K,m):
