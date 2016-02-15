@@ -25,8 +25,19 @@ def calc_A(dw, Nw, mu, sigma,ampl):
 	w = np.arange(-Nw*dw/2.,Nw*dw/2.,dw)
 	for i in range(len(mu)):
 		A += ampl[i] * np.exp(-((w - mu[i])**2/sigma[i]**2))
-	return A * dw
+	A = A * dw
+	return A/np.sum(A)
 
+def BCS_spectrum(beta,dw,delta,gap):
+	Nw = int(beta/dw)
+	spectrum = np.zeros((Nw))
+	for i in range(Nw):
+		w = i * dw
+		if delta < w and w < gap/2.:
+			spectrum[i] = np.abs(w)/(np.sqrt(w**2 - delta**2) * gap)
+		else:
+			spectrum[i] = 0.
+	return spectrum / np.sum(spectrum)
 
 def calc_K(dw,Nw,dtau,Ntau,beta):
 	"""calculates the kernel matrix for given number of time steps Ntau, and omega steps Nw.\
@@ -36,7 +47,7 @@ def calc_K(dw,Nw,dtau,Ntau,beta):
 	dtau,dw: step sizes for imaginary time tau and frequency omega."""
 
 	res = np.zeros((Ntau,Nw))
-
+	
 	for i in range(0,Ntau):
 		for j in range(0,Nw):
 			res[i,j] = np.exp(-j * dw * i * dtau) / (1. + np.exp(-beta * (j * dw)))
@@ -151,19 +162,13 @@ def root_finding_diag(u, m, alpha, V, Sigma, U, G, Cov, dw):
 	max_val = np.sum(m)
 	T_s = np.dot(V,np.dot(Sigma,U.T))
 	diff = 1.
-	
-	max_iter1 = 10000
-	max_iter2 = 10000
+	max_iter1 = 1000
+	max_iter2 = 1000
 	count1 = 1
 	u_old = u
+	type = np.zeros(max_iter1)
 	while diff > 1e-10 and count1 < max_iter1:
 		f_appr = m * np.exp(np.dot(U,u))
-		if np.any(np.isnan(f_appr)):
-			print( "NAN values encountered in f")
-			print (f_appr)
-			time.sleep(5)
-			u = u_old + np.random.normal(0.,1.,len(u))
-			continue
 		inv_cov = (1. / np.diagonal(Cov)**2)
 		inv_cov_mat = np.diag(inv_cov)
 		dLdF = - inv_cov * (G - np.dot(T_s, f_appr))
@@ -171,15 +176,9 @@ def root_finding_diag(u, m, alpha, V, Sigma, U, G, Cov, dw):
 		F_u = - alpha * u - g
 		M = np.dot(Sigma,np.dot(V.T,np.dot(inv_cov_mat,np.dot(V,Sigma))))
 		K = np.dot(U.T,np.dot(np.diag(f_appr),U))
-		if np.any(np.isnan(K)):
-			print ("Nan values encountered in K")
-			u = u_old + np.random.normal(0.,1.,len(u))
-			continue
 		eig_K, P = eigh(K)
+		eig_K[eig_K<0.] = 0.
 		O = np.diag(eig_K)
-
-		if len(eig_K[eig_K<0.]):
-			print (eig_K)
 		A = np.dot(np.sqrt(O), np.dot(P.T, np.dot(M, np.dot(P, np.sqrt(O)))))
 		eig_A,R = eigh(A)
 		Lambda = np.diag(eig_A)
@@ -196,14 +195,18 @@ def root_finding_diag(u, m, alpha, V, Sigma, U, G, Cov, dw):
 
 		delta_u = (-alpha * u - g - np.dot(M,np.dot(Y_inv.T,Y_inv_delta_u)))/(alpha)
 		count2 = 1
+		Jac = np.dot(M,K) + np.eye(s) * alpha
+		h = 0.1 * np.abs(np.dot(F_u.T,F_u))/np.abs(np.dot(F_u.T,np.dot(Jac,F_u)))
+		print(1./h)
 		while np.dot(delta_u.T,np.dot(K,delta_u)) > max_val and count2 < max_iter2:
-			B = (alpha+count2*1.)*np.diag(np.ones((s))) + Lambda
+			B = (alpha + count2 * 1./h)*np.diag(np.ones((s))) + Lambda
 			c_vec = -alpha * np.dot(Y_inv,u)-np.dot(Y_inv,g)
 			Y_inv_delta_u = np.zeros(len(c_vec))
 			for j in range(len(c_vec)):
 				Y_inv_delta_u[j] = c_vec[j] / B[j,j]
-			delta_u = (-alpha * u - g - np.dot(M,np.dot(Y_inv.T,Y_inv_delta_u)))/(alpha+count2 * 1.)
+			delta_u = (-alpha * u - g - np.dot(M,np.dot(Y_inv.T,Y_inv_delta_u)))/(alpha + count2 * 1./h)
 			count2 += 1
+		print(count2)
 		u_old = u
 		u = u + delta_u
 		diff = np.abs(np.sum(u-u_old))
