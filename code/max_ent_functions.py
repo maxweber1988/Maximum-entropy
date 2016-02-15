@@ -1,6 +1,7 @@
 from __future__ import print_function
 import numpy as np
-from scipy.linalg import lu_solve,lu_factor
+from scipy.linalg import lu_solve,lu_factor, eigh
+from scipy.sparse.linalg import eigsh
 import matplotlib.pyplot as plt
 import time
 
@@ -64,7 +65,7 @@ def root_finding_newton(u, m, alpha, V, Sigma, U, G, Cov, dw):
 	max_iter = 1000
 
 	while diff > 1e-10 and count1 <= max_iter:
-		A_appr = dw * m * np.exp(np.dot(U,u))
+		A_appr = m * np.exp(np.dot(U,u))
 		inv_cov = (1. / np.diagonal(Cov)**2)
 		inv_cov_mat = np.diag(inv_cov)
 		dLdF = - inv_cov * (G - np.dot(K_s, A_appr))
@@ -111,7 +112,7 @@ def max_likelihood_estimate(G,V_singular,U_singular,Sigma_singular):
 	max_iter = 1000
 
 	while diff > 1e-10 and count1 <= max_iter:
-		A_appr = dw * m * np.exp(np.dot(U,u))
+		A_appr = m * np.exp(np.dot(U,u))
 		inv_cov = (1. / np.diagonal(Cov)**2)
 		inv_cov_mat = np.diag(inv_cov)
 		dLdF = - inv_cov * (G - np.dot(K_s, A_appr))
@@ -151,12 +152,12 @@ def root_finding_diag(u, m, alpha, V, Sigma, U, G, Cov, dw):
 	T_s = np.dot(V,np.dot(Sigma,U.T))
 	diff = 1.
 	
-	max_iter1 = 1000
+	max_iter1 = 10000
 	max_iter2 = 10000
 	count1 = 1
 	u_old = u
 	while diff > 1e-10 and count1 < max_iter1:
-		f_appr = dw * m * np.exp(np.dot(U,u))
+		f_appr = m * np.exp(np.dot(U,u))
 		if np.any(np.isnan(f_appr)):
 			print( "NAN values encountered in f")
 			print (f_appr)
@@ -174,16 +175,15 @@ def root_finding_diag(u, m, alpha, V, Sigma, U, G, Cov, dw):
 			print ("Nan values encountered in K")
 			u = u_old + np.random.normal(0.,1.,len(u))
 			continue
-		eig_K, P = np.linalg.eig(K)
+		eig_K, P = eigh(K)
 		O = np.diag(eig_K)
-		# neu: teilweise negative Eigenwerte von K die dann in A Probleme machen! (ka woher die kommen bis jetzt)
+
 		if len(eig_K[eig_K<0.]):
 			print (eig_K)
 		A = np.dot(np.sqrt(O), np.dot(P.T, np.dot(M, np.dot(P, np.sqrt(O)))))
-		eig_A,R = np.linalg.eig(A)
+		eig_A,R = eigh(A)
 		Lambda = np.diag(eig_A)
 
-		# neu: Y_inv wird direkt berechnet, weil Y zu berechnen Probleme machen kann(zero division). 
 		Y_inv = np.dot(R.T,np.dot(np.sqrt(O),P.T))
 
 		B = (alpha)*np.diag(np.ones((s))) + Lambda
@@ -204,7 +204,6 @@ def root_finding_diag(u, m, alpha, V, Sigma, U, G, Cov, dw):
 				Y_inv_delta_u[j] = c_vec[j] / B[j,j]
 			delta_u = (-alpha * u - g - np.dot(M,np.dot(Y_inv.T,Y_inv_delta_u)))/(alpha+count2 * 1.)
 			count2 += 1
-		print(count2)
 		u_old = u
 		u = u + delta_u
 		diff = np.abs(np.sum(u-u_old))
@@ -213,13 +212,20 @@ def root_finding_diag(u, m, alpha, V, Sigma, U, G, Cov, dw):
 	return u	
 	
 def calc_p_alpha(A,alpha,Cov,G,K,m):
-	inv_cov_squ = (np.diag(1./np.diagonal(Cov)))**2
-	d2_chi = np.dot(K.T,np.dot(inv_cov_squ,K))
-	mat = np.dot(np.diag(np.sqrt(A)),np.dot(d2_chi,np.diag(np.sqrt(A))))
-	eig,eigv = np.linalg.eig(mat)
-	S = np.sum(A - m - A * np.log(A / m))
-	print("S = ", S)
-	L = 0.5 * np.sum((G - np.dot(K,A))**2/np.diagonal(Cov)**2)
+
+	inv_cov_squ = (1./np.diagonal(Cov))**2
+	# calculate 0.5 * d^2/dA^2 chi
+
+
+	d2_chi = np.dot(K.T,np.dot(np.diag(inv_cov_squ),K))
+	mat = 0.5 * np.dot(np.diag(np.sqrt(A)),np.dot(d2_chi,np.diag(np.sqrt(A))))
+	# print(np.amin(mat))
+	eig,eigv = eigh(mat)
+	# print(eig)
+	S = np.sum(A - m - A * np.log((1e-20 + A) / m))
+	L = 0.5 * np.sum((G - np.dot(K,A))**2 * inv_cov_squ)
+	# print("L=",L,"S=",S)
 	Q = alpha * S - L
-	p_alpha_val = np.prod(np.sqrt(alpha/(alpha+eig)) * 1./alpha * np.exp(Q))
+	#print("e^Q = ",np.exp(Q))
+	p_alpha_val = np.prod(np.sqrt(alpha/(alpha+eig))) * 1./alpha * np.exp(Q)
 	return p_alpha_val
