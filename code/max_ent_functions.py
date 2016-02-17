@@ -145,7 +145,7 @@ def max_likelihood_estimate(G,V_singular,U_singular,Sigma_singular):
 		count1 += 1
 	return u
 
-def root_finding_diag(u, m, alpha, V, Sigma, U, G, Cov, dw):
+def root_finding_diag(u, m, alpha, V, Sigma, U, G, Cov, dw,max_iter1 = 1000, max_iter2 = 1000):
 	"""
 	:param u: initial vector of u
 	:param m: vector of default model for the Lehmann spectral function
@@ -162,13 +162,13 @@ def root_finding_diag(u, m, alpha, V, Sigma, U, G, Cov, dw):
 	max_val = np.sum(m)
 	T_s = np.dot(V,np.dot(Sigma,U.T))
 	diff = 1.
-	max_iter1 = 1000
-	max_iter2 = 1000
+
 	count1 = 1
 	u_old = u
 	type = np.zeros(max_iter1)
 	while diff > 1e-10 and count1 < max_iter1:
 		f_appr = m * np.exp(np.dot(U,u))
+		f_old = f_appr
 		inv_cov = (1. / np.diagonal(Cov)**2)
 		inv_cov_mat = np.diag(inv_cov)
 		dLdF = - inv_cov * (G - np.dot(T_s, f_appr))
@@ -189,24 +189,23 @@ def root_finding_diag(u, m, alpha, V, Sigma, U, G, Cov, dw):
 		c_vec = -alpha * np.dot(Y_inv,u)-np.dot(Y_inv,g)
 		Y_inv_delta_u = np.zeros(len(c_vec))
 
-		# neu: keine LU Zerlegung mehr, da B diagonal ist.
 		for i in range(len(c_vec)):
 			Y_inv_delta_u[i] = c_vec[i] / B[i,i]
 
 		delta_u = (-alpha * u - g - np.dot(M,np.dot(Y_inv.T,Y_inv_delta_u)))/(alpha)
+		f_appr = m * np.exp(np.dot(U,u+delta_u))
 		count2 = 1
 		Jac = np.dot(M,K) + np.eye(s) * alpha
 		h = 0.1 * np.abs(np.dot(F_u.T,F_u))/np.abs(np.dot(F_u.T,np.dot(Jac,F_u)))
-		print(1./h)
-		while np.dot(delta_u.T,np.dot(K,delta_u)) > max_val and count2 < max_iter2:
+		while np.linalg.norm(f_appr - f_old) > max_val and count2 < max_iter2:
 			B = (alpha + count2 * 1./h)*np.diag(np.ones((s))) + Lambda
 			c_vec = -alpha * np.dot(Y_inv,u)-np.dot(Y_inv,g)
 			Y_inv_delta_u = np.zeros(len(c_vec))
 			for j in range(len(c_vec)):
 				Y_inv_delta_u[j] = c_vec[j] / B[j,j]
 			delta_u = (-alpha * u - g - np.dot(M,np.dot(Y_inv.T,Y_inv_delta_u)))/(alpha + count2 * 1./h)
+			f_appr = m * np.exp(np.dot(U,u+delta_u))
 			count2 += 1
-		print(count2)
 		u_old = u
 		u = u + delta_u
 		diff = np.abs(np.sum(u-u_old))
