@@ -111,6 +111,9 @@ INPUT ./images/BCS_varying_alpha.pdf
 INPUT ./images/BCS_varying_cutoffs.pdf
 INPUT ./images/BCS_varying_cutoffs.pdf
 INPUT ./images/BCS_varying_cutoffs.pdf
+INPUT ./images/BCS_Bryan_classic_p_alpha.pdf
+INPUT ./images/BCS_Bryan_classic_p_alpha.pdf
+INPUT ./images/BCS_Bryan_classic_p_alpha.pdf
 INPUT report.aux
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb

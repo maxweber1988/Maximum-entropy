@@ -1,8 +1,9 @@
 # Fdb version 3
-["pdflatex"] 1455739130 "report.tex" "report.pdf" "report" 1455739130
+["pdflatex"] 1455813300 "report.tex" "report.pdf" "report" 1455813301
   "./images/BCS_A_G_example.pdf" 1455738804 14358 0cec6922d021b060d952049a834aae30 ""
-  "./images/BCS_varying_alpha.pdf" 1455738834 21352 0b47fe015ea0fc90ce967f8210fc0296 ""
-  "./images/BCS_varying_cutoffs.pdf" 1455738857 24159 6dd46e347ce093cae11e13dd87d9362a ""
+  "./images/BCS_Bryan_classic_p_alpha.pdf" 1455812626 22632 d1a826e97f13d1fb6ef8c6bbd8df06e0 ""
+  "./images/BCS_varying_alpha.pdf" 1455810477 21960 6e443f5f75e99d214c23e4f64504bc16 ""
+  "./images/BCS_varying_cutoffs.pdf" 1455810489 22761 48b74884b5c6703a2563a1fface35418 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/jknappen/ec/ecbx1440.tfm" 1136768653 3584 13049b61b922a28b158a38aeff75ee9b ""
@@ -71,10 +72,11 @@
   "/usr/local/texlive/2015/texmf-var/web2c/pdftex/pdflatex.fmt" 1444370464 3849859 3a1fde8bc2b37c946b65c457832aebc8 ""
   "/usr/local/texlive/2015/texmf.cnf" 1432479636 577 0d611272082f3cdb8e80e09a3c69cf07 ""
   "images/BCS_A_G_example.pdf" 1455738804 14358 0cec6922d021b060d952049a834aae30 ""
-  "images/BCS_varying_alpha.pdf" 1455738834 21352 0b47fe015ea0fc90ce967f8210fc0296 ""
-  "images/BCS_varying_cutoffs.pdf" 1455738857 24159 6dd46e347ce093cae11e13dd87d9362a ""
-  "report.aux" 1455739130 2206 69522debf1b5e153ab88e21ec67ab796 ""
-  "report.tex" 1455739129 10859 b176c26adaff2536d46ad7d1fb77447d ""
+  "images/BCS_Bryan_classic_p_alpha.pdf" 1455812626 22632 d1a826e97f13d1fb6ef8c6bbd8df06e0 ""
+  "images/BCS_varying_alpha.pdf" 1455810477 21960 6e443f5f75e99d214c23e4f64504bc16 ""
+  "images/BCS_varying_cutoffs.pdf" 1455810489 22761 48b74884b5c6703a2563a1fface35418 ""
+  "report.aux" 1455813300 2323 55395cdc4d223e09700d73788f81047c ""
+  "report.tex" 1455813299 11445 d943b9061d867693f3a2d7ac80512c45 ""
   (generated)
   "report.pdf"
   "report.aux"

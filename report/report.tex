@@ -91,7 +91,7 @@ With $\mathbf{W} = \frac{\partial^2 L}{\partial^2 \vec F}$, $\mathbf{M} = \mathb
 	\label{numerical_algorithm:equ.10}
 \end{equation}
 At each iteration step of the Newton search the step length $\vec{\delta u}$ muss be restricted for the stability of the algorithm.
-Therefor, also a Levenberg-Marquardt parameter $\mu$ is added in Equ.\ref{numerical_algorithm:equ.10} to ensure stability.
+Therefor, a Levenberg-Marquardt parameter $\mu$ is added in Equ.\ref{numerical_algorithm:equ.10} to ensure stability.
 Bryan proposes $\vec{\delta u}^T T \vec{\delta u} \leq \sum m_i$ as a maximum step length for the algorithm.
 However, we found that sometimes even if this criterion is fulfilled the algorithm can be instable due to numerical overflow in Equ. 5.
 Therefor, we use the criterion $\parallel \vec A \parallel^2 \leq \sum_i m_i$.
@@ -170,6 +170,13 @@ Another important parameter is the choice of the minimum singular value $\theta$
 	\label{results:fig.3}
 \end{figure}
 \FloatBarrier
+Finally we show the difference between classic MEM and the Bryan method in choosing $\alpha$. As discussed in Sec. !!Reference!! the classic MEM uses the maximum value of the probability of $\alpha$ given $A$ and $G$ while Bryan calculates the final $\hat{A}$ by  $\hat{A} = \int A(\alpha) P_{\alpha} d\alpha$. In Fig. we show the probability $p_{\alpha}$ and the resulting spectra calculated by classic and Bryan's method
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.95\textwidth]{./images/BCS_Bryan_classic_p_alpha.pdf}
+	\caption{caption}
+	\label{results:fig.4}
+\end{figure}
 % section results (end)
 \section{Conclusions} % (fold)
 \label{sec:conclusions}
