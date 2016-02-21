@@ -1,0 +1,211 @@
+\subsection{The Maximum Entropy Method (MEM)}
+
+Given a N dimensional noisy data set $\vec{G}$ and a model characterized by the M dimensional parameter vector $\vec{A}$. 
+The model is assumed to represent a valid relation between $G_{i}$ and $\vec{A}$. This means that for an exact value $G_{i}$ 
+and perhaps some other known parameters, one could in principle determine the correct vector of unknown parameters $\vec{A}$. 
+However since $\vec{G}$ is noisy the uncertainty 
+about the true value of $G_{i}$ induces a uncertainty on the true value of $\vec{A}$. Therefore it makes sense to determine 
+a probability distribution $p(\vec{A}|\vec{G})$ instead of one single solution for $\vec{A}$. \\
+Using Bayes' theorem the following relation for the wanted prob. distribution $p(\vec{A}|\vec{G})$ can be found
+
+\begin{displaymath}
+ p(\vec{A}|\vec{G}) \propto p(\vec{G}|\vec{A}) p(\vec{A})
+\end{displaymath}
+
+\noindent This is the well known $posterior \propto likelihood * prior$ relation from Bayesian statistics. Hence if it 
+is possible to find the likelihood and posterior distributions one has quantitative information about the probability for 
+$\vec{A}$ to be true given $\vec{G}$.\\
+
+\subsubsection{The likelihood function}
+
+Following Bryan [reference] for the maximum entropy method the likelihood function is restricted to the functional form 
+\begin{displaymath}
+ p(\vec{G}|\vec{A}) \propto exp(-L(\vec{F},\vec{G}))
+\end{displaymath}
+where $\vec{F}$ is leneary related to $\vec{A}$, $\vec{F} = \textbf{K} \vec{A}$ by the matrix \textbf{K} which 
+represents a valid relation between $\vec{A}$ and $\vec{G}$.\\
+
+\subsubsection{The prior distribution}
+
+In contrast to the likelihood function which can be found by data manipulation and reasoning in most cases very exact, the 
+prior is quiet hard to find in a correct way. This is the typical drawback of Bayesian inference methods.
+The core of the maximum entropy method is now the used prior distribution. Following again Brayn [reference] the prior for 
+an unnormalized positive additive density $\vec{A}$ is given by
+\begin{displaymath}
+ p(\vec{A}| \alpha, \vec{m}) \propto exp(\alpha S(\vec{m},\vec{A}))
+\end{displaymath}
+where $\alpha \in \mathbb{R}^+$ is a unknown parameter and S is the entropy of $\vec{A}$ relative to a default model $\vec{m}$
+\begin{displaymath}
+ S = \sum_{m=1}^{M} A_m -m_m -A_m log(A_m/m_m)
+\end{displaymath}
+
+\noindent It is noteworthy that on the one hand this restricts the parameter vector $\vec{A}$ to be possible to be interpreted as 
+\textit{positive additive density}. On the other hand the choice for $\alpha$ and $\vec{m}$ are of big influece and have to 
+handled with care. This subject will be addressed in more detail in a later chapter. 
+
+\subsubsection{The posterior distribution}
+
+\noindent Combining now both general forms of the likelihood and prior distribution within the maximum entropy framework the posterior 
+distribution for $\vec{A}$ is up to a normalization constant given by 
+\begin{equation}\label{eq:posterior_general}
+ p(\vec{A}|\vec{m},\alpha,\vec{G}) \propto exp(\alpha S(\vec{m},\vec{A}) - L(\vec{F},\vec{G})) = exp(Q)
+\end{equation}
+
+
+\noindent Hence for given $\alpha$, expression~(\ref{eq:posterior_general}) reaches its maximum probability for $\vec{\hat{A}}$
+which maximizes $Q = \alpha S - L$. This means we have to find $\vec{\hat{A}}$ such that
+\begin{equation}\label{eq:max_A_constraint}
+ \vec{\nabla} Q(\vec{\hat{A}}) = \alpha \vec{\nabla} S(\vec{\hat{A}}) - \vec{\nabla} L(\vec{\hat{A}}) = 0
+\end{equation}
+
+\noindent The numercial solution of equation~(\ref{eq:max_A_constraint}) is the central issue of the MEM algorithm. 
+
+\subsection{Analytic Continuation of QMC Data using MEM}
+
+Most quantum Monte Carlo (QMC) simulations produce Green's functions $G(\tau)$ of Matsubara imaginary time $\tau = it$.
+However the real time/frequency results $G(t)$/$G(\omega)$ are crucial since most experiments probe quantities related to 
+the real time/frequency Green's functions. Fortunately the relation between $G(\tau)$ and the imaginary part of $G(\omega)$,
+is linear and given by 
+\begin{equation}\label{eq:connection_real_frequency_imag_time}
+G(\tau) = \int d\omega A(\omega)K(\tau,\omega) 
+\end{equation}
+\noindent where the so caled Lehmann spectral function is given by $A(\omega) = -\frac{1}{\pi} \Im G(\omega)$ and $K(\tau,\omega)$ is a kernel, 
+different for fermionic, bosonic or anomalous case. Therefore if it is possible to reconstruct $A(\omega)$ from given $G(\tau)$
+one has the information about the real frequency Green's function $G(\omega)$. Why???? \\
+In this report we will restrict our self to the fermoinic case. For fermions the Lehmann spectral function is positve 
+definite, $G(\tau)$ is periodic with inverse temperatur $\beta = 1 / k_B T$ and the Kernel is given by
+\begin{equation}\label{eq:ferminoc_kernel}
+ K(\tau,\omega) =  \frac{exp(-\tau \omega)}{1 + exp(-\beta \omega)}
+\end{equation}
+
+\subsubsection{Discretized version of the problem}
+
+\noindent Because of the methodically given uncertainty of Quantum Monte Carlo simulations, doing QMC for N different imaginary 
+times $\tau_n$ will produce a N dimensional noisy data set $\vec{G}$ where $G_n$ is the mean of all QMC steps.\\
+The idea is now to find a way to extract $A(\omega)$ form the noisy data set $\vec{G}$ using the maximum entropy method.\\
+First of all we note that for the MEM formalism a valid model wich predicts $G_n$ for a given M dimensional parameter vector
+$\vec{A}$ is necessary. This can be achieved if expression~(\ref{eq:connection_real_frequency_imag_time}) is approximated
+as Rieman sum 
+\begin{equation}\label{eq:kernel_as_reiman_sum}
+ G_n = G(\tau_n) = \int_{a}^{b} d \omega A(\omega)K(\tau_n,\omega) \approx \sum_{m=1}^M  A_m K(\tau_n,\omega_m)
+\end{equation}
+\noindent where $A_m = \Delta \omega A(\omega_m)$, $ \omega_m = \Delta \omega m$ and $\Delta \omega = (b-a)/M$ (a,b have to be choosen in a sensible way).
+After this discretizaton we have a parameter vector $\vec{A} =(A_1,...,A_M)^T$ and a true linear model $\vec{G} = \textbf{K} 
+\vec{A}$ where $\textbf{K} \in \mathbb{R}^{N\times M}$ and $K_{nm} = K(\tau_n,\omega_m)$.
+
+\subsubsection{The likelihood function}
+
+As already mentioned to apply the Maximum Entropy Method the likelihood function hast to have the functional form 
+$ p(\vec{G}|\vec{A}) \propto exp(-L(\vec{F},\vec{G}))$ where $\vec{F}$ is leneary related to $\vec{A}$ by
+$\vec{F} = \textbf{K} \vec{A}$ what is already fulfilled by~(\ref{eq:kernel_as_reiman_sum}). For QMC data it is 
+possible to achieve a multivariate gaussian shape of the likelihood function, such that $L = 1/2 ((\vec{G} - \vec{F})^T 
+diag\{1/ \sigma_n^2 \} (\vec{G} - \vec{F}))$.
+
+Since for the purpose of this educational project work no real QMC data was available we will only give a short overview of
+the main aspects how QMC data has to be manipulated in principle to reach the desired form of the likelihood function.\\
+For each of the N imaginary times $\tau_n$, $G(\tau_n) = G_n$ is calculated a plenty of times in $N_{QMC}$ QMC steps, with results $G_n^i$ and each with a different error. 
+Hence one can interpret the relative freqency as probability distribution \[ p_{QMC}(G_n)= n(G_n^i = G_n)/N_{QMC} \]
+The resulting distribution $p_{QMC}(G_n)$ is not gaussian and also correlated between different QMC steps. To get rid
+of this problem one perfoms a rebinning of the data. This means one considers the average of $n_b$ succeding measurement as new 
+datapoint \[G_n^b = \sum_{(b-1) n_b + 1}^{b n_b} \frac{G_n^i}{n_b} \] 
+\noindent So instead of $N_{QMC}$ datapoints for each $\tau_n$
+we have now $N_b = N_{QMC}/n_b$ datapoints. This rebinning has now two desired effects wich we can understand if the
+procedure is considered as logical 2 step rebinning. 
+\begin{enumerate}
+\item In a first rebinning we get rid of the correlations between the succeding QMC steps. (As long as the bin size $n_b$
+ is choosen big enough compared to the correlation lenght.)
+\item Since correlations are removed the rebinned data represents a set of independent and identical drawn random variables.
+Hence for the second rebinning step we can argue using the central limit theorem that the resulting random variable should
+be gaussian distributed.
+\end{enumerate}
+
+Remark: To find the optimal binsize $n_b$ the current method is to compare higher moments (skewness, kurtosis) of the rebinned 
+data to a data set of equal length $N_b$, drawn by perfect gaussian. The optimal size for $n_b$ is reached if the
+moments for both data samples converge.\\
+
+\noindent This gaussian distribution can be approximated by \[ p(G_n^b) = \frac{1}{\sqrt{2 \pi} \sigma_n} exp(-\frac{(G_n^b - \overline{G}_n)^2}{2 \sigma_n^2}) \]
+\noindent where $\overline{G}_n = \sum_{b} G_n^b /N_b$ and $\sigma_n^2 = \sum_b (G_n^b - \overline{G}_n)^2 / (N_b -1)$ are calculated
+in the usual way from the data. It is helpfull to keep in mind, that this distributions is only an approximation and not the 
+true one due to the errors in $\overline{G}_n$ and $\sigma_n$.\\
+But with this information we can argue using again the CLT that the true distribution of the mean for each time step $\tau_n$ is 
+again gaussian 
+\[ p(\overline{G}_n) = \frac{1}{\sqrt{2 \pi} \sigma_n^{real}} exp(-\frac{(\overline{G}_n - \mu_n)^2}{2 \sigma_n^{real}}) \]
+
+where $\mu_n$ and $\sigma_n^{real}$ represent unknown true values. We now assume that for a true $G(\tau_n)$ the observed QMC 
+results are distributed in a way that $G(\tau_n)$ is given by the mean of the observed QMC results. Since the mean is conserved 
+under all rebinning and averaging steps we have $G(\tau_n) = \mu_n$. Using ~(\ref{eq:kernel_as_reiman_sum}) we can argue
+that for a given spectral function $A(\omega)$ the observed distribution for $\overline{G}_n$ is given by 
+
+\[ p(\overline{G}_n | \vec{A}) = \frac{1}{\sqrt{2 \pi} \sigma_n^{real}} exp(-\frac{(\overline{G}_n - \sum_m K_{nm}A_m)^2}{2 \sigma_n^{real}}) \]
+
+\noindent In a last step we approximate $\sigma_n^{real} \approx \sigma_n/ \sqrt N_b$ motivated by the CLT and reformulate the 
+whole problem in a compact multivariate form. This gives a likelihood function 
+
+\begin{equation}
+ p(\vec{\overline{G}}|\vec{A}) \propto exp \left( -\frac{1}{2} (\vec{\overline{G}}-\textbf{K}\vec{A})^T diag\{ \frac{N_b}{\sigma_n^2} \} (\vec{\overline{G}}-\textbf{K}\vec{A})  \right)
+\end{equation}
+
+\noindent where we have assumed statistical independence between the different $\overline{G}_n$. For simplicity of notation 
+we will set $\vec{\overline{G}} \rightarrow \vec{G}$ and $  \sigma_n / \sqrt N_b  \rightarrow \sigma_n$ in the upcomming parts
+of this report. Such that the final form of the likelihood function given by 
+
+\begin{align}\label{eq:likelihood function}
+ \begin{split}
+ p(\vec{G}|\vec{A}) & \propto  exp \left( -\frac{1}{2} (\vec{G}-\textbf{K}\vec{A})^T diag\{ \frac{1}{\sigma_n^2} \} (\vec{G}-\textbf{K}\vec{A})  \right)
+ \\
+ & = exp \left( -\frac{1}{2} (\vec{G}-\vec{F})^T diag\{ \frac{1}{\sigma_n^2} \} (\vec{G}-\vec{F})  \right)
+ \\
+ & = exp(- L(\vec{F},\vec{G}))  
+ \end{split}
+\end{align}
+
+\subsubsection{The prior distribution}
+
+Since $A(\omega)$ is positive definite $\vec{A}$ has all properties neccesary to apply the form of the MEM prior. 
+\begin{equation}\label{eq:prior}
+ p(\vec{A}|\alpha,\vec{m}) \propto exp(\alpha S(\vec{A},\vec{m})
+\end{equation}
+
+\subsubsection{The posterior distribution}
+
+Putting all things together we found an expression for the probability of $\vec{A}$ to be the true spectral function in 
+case observing the data $\vec{G}$ given $\alpha$ and $\vec{m}$.
+\begin{equation}\label{eq:posterior}
+ p(\vec{A}|\alpha,\vec{m},\vec{G}) \propto  exp(\alpha S - L(\vec{F},\vec{G})) = exp(Q(\vec{A}))
+\end{equation}
+Therefore for given $\alpha$ and $\vec{m}$ we can calculate the most probable $\vec{\hat{A}}$. However this tells us nothing about
+the plausibility of the values for $\alpha$ and $\vec{m}$ which have significat influence of the obtained results.
+
+\subsubsection{Approaches to treat $\alpha$}
+
+We will present 2 common ways how to deal with the uncertainty about how to choose $\alpha$. The so called \textit{Classic} 
+and \textit{Bryan's method}. 
+\\
+If we introduce $p(\alpha$) the prior probability distribution for $\alpha$ (which we assume to be independen on $\vec{m}$ 
+we can find a posterior distribution for $\alpha$ using~(\ref{eq:posterior}) as
+\begin{equation}
+ p(\alpha | \vec{G},\vec{m}) = \int d\vec{A} p(\alpha,\vec{A}|\vec{G},\vec{m}) = \int d\vec{A} p(\vec{A}|\alpha,\vec{m},\vec{G})p(\alpha)
+\end{equation}
+
+\noindent Making a gaussian approximation $exp(Q(\vec{A})) \approx exp(Q(\vec{\hat{A}}) + \frac{1}{2} \delta \vec{A}^T \nabla \nabla Q(\vec{\hat{A}}) \delta \vec{A})$
+of~(\ref{eq:posterior}) we can approximate the intragral by 
+
+\begin{equation}\label{eq:prob_of_alpha}
+ p(\alpha|\vec{G},\vec{m}) \propto  \prod_m  \left( \frac{\alpha}{\alpha + \lambda_m} \right)^{1/2}  exp(Q(\vec{\hat{A}}(\alpha))p(\alpha)
+\end{equation}
+where $\lambda_m$ are the eigenvalues of $diag\{ \vec{A}^{1/2}\} \nabla \nabla L(\vec{A}) diag\{\vec{A}^{1/2}\} $ 
+evaluated at $\vec{\hat{A}}(\alpha)$.
+\\
+\noindent The \textit{Classic method} is now to choose $\hat{\alpha}$ which maximizes~(\ref{eq:prob_of_alpha}). Seting 
+$\partial_{\alpha}p(\alpha|\vec{G},\vec{m}) = 0$ and assuming $\partial_{\alpha}\lambda_m \approx 0$ and that the prior
+$p(\alpha)$ will be owerwhelmed by the data, this leads to 
+\begin{equation}\label{eq:classic_method_constraint}
+ -2\hat{\alpha}S \approx \sum_m \frac{\lambda_m}{\lambda_m +\hat{\alpha}} 
+\end{equation}
+
+\noindent \textit{Brayn's method} in contrast tries to use the wohle information contained in $p(\alpha|\vec{G},\vec{m})$. 
+Instead of choosing one single value for $\alpha$ one takes the expection value of $\vec{\hat{A}}(\alpha)$.
+\begin{equation}\label{eq:brayn_method_constraint}
+ \vec{\overline{A}} = \int d\alpha \vec{\hat{A}}(\alpha) p(\alpha|\vec{G},\vec{m})
+\end{equation}
+

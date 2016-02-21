@@ -4,6 +4,7 @@ from scipy.linalg import lu_solve,lu_factor, eigh
 from scipy.sparse.linalg import eigsh
 import matplotlib.pyplot as plt
 import time
+import mpmath as mpm
 
 def calc_A(dw, Nw, mu, sigma,ampl):
 	"""
@@ -75,8 +76,10 @@ def root_finding_newton(u, m, alpha, V, Sigma, U, G, Cov, dw):
 	count1 = 1
 	max_iter = 1000
 
-	while diff > 1e-10 and count1 <= max_iter:
+	while diff > 1e-5 and count1 <= max_iter:
+		print(count1)
 		A_appr = m * np.exp(np.dot(U,u))
+		A_old = A_appr
 		inv_cov = (1. / np.diagonal(Cov)**2)
 		inv_cov_mat = np.diag(inv_cov)
 		dLdF = - inv_cov * (G - np.dot(K_s, A_appr))
@@ -86,11 +89,13 @@ def root_finding_newton(u, m, alpha, V, Sigma, U, G, Cov, dw):
 		J = alpha * np.diag(np.ones((s))) + np.dot(M,T)
 		lu_and_piv = lu_factor(J)
 		delta_u = lu_solve(lu_and_piv,F_u)
+		A_appr = m * np.exp(np.dot(U,u + delta_u))
 		count2 = 1
-		while np.dot(delta_u.T,np.dot(T,delta_u.T)) > max_val and count2 <= max_iter:
+		while np.linalg.norm(A_appr - A_old) > max_val and count2 <= max_iter:
 			J = (alpha+count2*1e10) * np.diag(np.ones((s))) + np.dot(M,T)
 			lu_and_piv = lu_factor(J)
 			delta_u = lu_solve(lu_and_piv,F_u)
+			A_appr = m * np.exp(np.dot(U,u + delta_u))
 			count2 +=1
 		u_old = u 
 		u = u + delta_u
@@ -134,8 +139,10 @@ def max_likelihood_estimate(G,V_singular,U_singular,Sigma_singular):
 		lu_and_piv = lu_factor(J)
 		delta_u = lu_solve(lu_and_piv,F_u)
 		count2 = 1
+		h = np.abs(np.dot(F_u.T,F_u))/np.abs(np.dot(F_u.T,np.dot(Jac,F_u)))
+		mu = 1./h
 		while np.dot(delta_u.T,np.dot(T,delta_u.T)) > max_val and count2 <= max_iter:
-			J = (alpha+count2*1e10) * np.diag(np.ones((s))) + np.dot(M,T)
+			J = (alpha+count2*mu) * np.diag(np.ones((s))) + np.dot(M,T)
 			lu_and_piv = lu_factor(J)
 			delta_u = lu_solve(lu_and_piv,F_u)
 			count2 +=1
@@ -144,6 +151,7 @@ def max_likelihood_estimate(G,V_singular,U_singular,Sigma_singular):
 		diff = np.abs(np.sum(u-u_old))
 		count1 += 1
 	return u
+
 
 def root_finding_diag(u, m, alpha, V, Sigma, U, G, Cov, dw,max_iter1 = 1000, max_iter2 = 1000):
 	"""
@@ -159,14 +167,14 @@ def root_finding_diag(u, m, alpha, V, Sigma, U, G, Cov, dw,max_iter1 = 1000, max
 	:return:
 	"""
 	s=len(u)
-	max_val = 10 * np.sum(m)
+	max_val = 5 * np.sum(m)
 	T_s = np.dot(V,np.dot(Sigma,U.T))
 	diff = 1.
 
 	count1 = 1
 	u_old = u
 	type = np.zeros(max_iter1)
-	while diff > 1e-8 and count1 < max_iter1:
+	while diff > 1e-10 and count1 < max_iter1:
 		f_appr = m * np.exp(np.dot(U,u))
 		f_old = f_appr
 		inv_cov = (1. / np.diagonal(Cov)**2)
@@ -177,7 +185,7 @@ def root_finding_diag(u, m, alpha, V, Sigma, U, G, Cov, dw,max_iter1 = 1000, max
 		M = np.dot(Sigma,np.dot(V.T,np.dot(inv_cov_mat,np.dot(V,Sigma))))
 		K = np.dot(U.T,np.dot(np.diag(f_appr),U))
 		eig_K, P = eigh(K)
-		eig_K[eig_K<0.] = 0.
+		eig_K[eig_K < 0.] = 0.
 		O = np.diag(eig_K)
 		A = np.dot(np.sqrt(O), np.dot(P.T, np.dot(M, np.dot(P, np.sqrt(O)))))
 		eig_A,R = eigh(A)
@@ -196,20 +204,21 @@ def root_finding_diag(u, m, alpha, V, Sigma, U, G, Cov, dw,max_iter1 = 1000, max
 		f_appr = m * np.exp(np.dot(U,u+delta_u))
 		count2 = 1
 		Jac = np.dot(M,K) + np.eye(s) * alpha
-		h = 0.1 * np.abs(np.dot(F_u.T,F_u))/np.abs(np.dot(F_u.T,np.dot(Jac,F_u)))
+		h = np.abs(np.dot(F_u.T,F_u))/np.abs(np.dot(F_u.T,np.dot(Jac,F_u)))
+		mu = 1./h
 		while np.linalg.norm(f_appr-f_old) > max_val and count2 < max_iter2:
-			B = (alpha + count2 * 1./h)*np.diag(np.ones((s))) + Lambda
+			B = (alpha + count2 * mu)*np.diag(np.ones((s))) + Lambda
 			c_vec = -alpha * np.dot(Y_inv,u)-np.dot(Y_inv,g)
 			Y_inv_delta_u = np.zeros(len(c_vec))
 			for j in range(len(c_vec)):
 				Y_inv_delta_u[j] = c_vec[j] / B[j,j]
-			delta_u = (-alpha * u - g - np.dot(M,np.dot(Y_inv.T,Y_inv_delta_u)))/(alpha + count2 * 1./h)
+			delta_u = (-alpha * u - g - np.dot(M,np.dot(Y_inv.T,Y_inv_delta_u)))/(alpha + count2 * mu)
 			f_appr = m * np.exp(np.dot(U,u+delta_u))
 			count2 += 1
 		u_old = u
 		u = u + delta_u
 		if np.any(np.isinf(m * np.exp(np.dot(U,u)))):
-			u = u
+			u = u_old + np.random.normal(u_old,1,len(u_old))
 		diff = np.abs(np.sum(u-u_old))
 		count1 += 1
 	print(count1)

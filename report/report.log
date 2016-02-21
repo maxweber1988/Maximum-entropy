@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.9)  18 FEB 2016 17:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.9)  21 FEB 2016 14:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -99,6 +99,48 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 \mathdisplay@stack=\toks18
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/lm/lmodern.sty
+Package: lmodern 2009/10/30 v1.6 Latin Modern Fonts
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/lmm/m/it on input line 23.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/lmsy/m/n on input line 24.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 25.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 26.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/lmm/b/it on input line 27.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/lmsy/b/n on input line 28.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 31.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 32.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/lmr/m/it on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 36.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
@@ -302,19 +344,23 @@ LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
 )) (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 19.
 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/lm/t1lmr.fd
+File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
 (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count133
@@ -376,66 +422,128 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
+(./theory.tex
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 3.
+ (/usr/local/texlive/2015/texmf-dist/tex/latex/lm/ot1lmr.fd
+File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 3.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 3.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/lm/omslmsy.fd
+File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 3.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/lm/omxlmex.fd
+File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 3.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 3.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 3.
+LaTeX Font Info:    Try loading font information for U+msa on input line 3.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 3.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Underfull \hbox (badness 10000) in paragraph at lines 15--18
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--27
+
+ []
+
 [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-[2] [3] <./images/BCS_A_G_example.pdf, id=23, 578.16pt x 433.62pt>
+[2] [3]
+Underfull \hbox (badness 10000) in paragraph at lines 122--125
+
+ []
+
+[4]
+Overfull \hbox (14.42311pt too wide) in paragraph at lines 195--202
+\T1/lmr/m/n/10 The \T1/lmr/m/it/10 Clas-sic method \T1/lmr/m/n/10 is now to cho
+ose $[]$ which max-i-mizes (11[]). Set-ing $\OML/lmm/m/it/10 @[]p\OT1/lmr/m/n/1
+0 (\OML/lmm/m/it/10 \OMS/lmsy/m/n/10 j[]\OML/lmm/m/it/10 ; []\OT1/lmr/m/n/10 )
+ =
+ []
+
+[5]) (./numerics.tex [6] [7]) (./results.tex
+<./images/BCS_A_G_example.pdf, id=40, 578.16pt x 433.62pt>
 File: ./images/BCS_A_G_example.pdf Graphic file (type pdf)
 
 <use ./images/BCS_A_G_example.pdf>
-Package pdftex.def Info: ./images/BCS_A_G_example.pdf used on input line 152.
+Package pdftex.def Info: ./images/BCS_A_G_example.pdf used on input line 14.
 (pdftex.def)             Requested size: 327.74895pt x 245.80959pt.
-
-<./images/BCS_varying_alpha.pdf, id=24, 578.16pt x 433.62pt>
+ [8] [9 <./images/BCS_A_G_example.pdf>]
+<./images/BCS_varying_alpha.pdf, id=76, 578.16pt x 433.62pt>
 File: ./images/BCS_varying_alpha.pdf Graphic file (type pdf)
 
 <use ./images/BCS_varying_alpha.pdf>
-Package pdftex.def Info: ./images/BCS_varying_alpha.pdf used on input line 160.
-
+Package pdftex.def Info: ./images/BCS_varying_alpha.pdf used on input line 22.
 (pdftex.def)             Requested size: 327.74895pt x 245.80959pt.
- [4 <./images/BCS_A_G_example.pdf>]
-<./images/BCS_varying_cutoffs.pdf, id=57, 578.16pt x 433.62pt>
+
+<./images/BCS_varying_cutoffs.pdf, id=77, 578.16pt x 433.62pt>
 File: ./images/BCS_varying_cutoffs.pdf Graphic file (type pdf)
 
 <use ./images/BCS_varying_cutoffs.pdf>
-Package pdftex.def Info: ./images/BCS_varying_cutoffs.pdf used on input line 16
-8.
+Package pdftex.def Info: ./images/BCS_varying_cutoffs.pdf used on input line 30
+.
 (pdftex.def)             Requested size: 327.74895pt x 245.80959pt.
- [5 <./images/BCS_varying_alpha.pdf>]
-[6 <./images/BCS_varying_cutoffs.pdf>]
-<./images/BCS_Bryan_classic_p_alpha.pdf, id=143, 578.16pt x 433.62pt>
+ [10 <./images/BCS_varying_alpha.pdf>]
+[11 <./images/BCS_varying_cutoffs.pdf>]
+<./images/BCS_Bryan_classic_p_alpha.pdf, id=163, 578.16pt x 433.62pt>
 File: ./images/BCS_Bryan_classic_p_alpha.pdf Graphic file (type pdf)
 
 <use ./images/BCS_Bryan_classic_p_alpha.pdf>
 Package pdftex.def Info: ./images/BCS_Bryan_classic_p_alpha.pdf used on input l
-ine 176.
+ine 38.
 (pdftex.def)             Requested size: 327.74895pt x 245.80959pt.
- [7 <./images/BCS_Bryan_classic_p_alpha.pdf>] (./report.aux) ) 
+) [12 <./images/BCS_Bryan_classic_p_alpha.pdf>] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 8879 strings out of 493089
- 166029 string characters out of 6134842
- 205670 words of memory out of 5000000
- 12307 multiletter control sequences out of 15000+600000
- 8861 words of font info for 24 fonts, out of 8000000 for 9000
+ 9104 strings out of 493089
+ 170478 string characters out of 6134842
+ 210425 words of memory out of 5000000
+ 12474 multiletter control sequences out of 15000+600000
+ 59673 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,9n,37p,10374b,247s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texli
-ve/2015/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive
-/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/
-2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2
-015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/20
-15/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2015
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2015/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2015/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2015/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/texmf-dist
-/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/2015/texmf-dist/f
-onts/type1/public/cm-super/sfrm1000.pfb>
-Output written on report.pdf (7 pages, 195350 bytes).
+ 38i,17n,37p,10374b,247s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/tex
+live/2015/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2015/texm
+f-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2015/texmf-dist/fon
+ts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvi
+ps/lm/lm-ec.enc}{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-mathe
+x.enc}</usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></us
+r/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2015
+/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2015/texmf-dis
+t/fonts/type1/public/lm/lmmi5.pfb></usr/local/texlive/2015/texmf-dist/fonts/typ
+e1/public/lm/lmmi7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/l
+m/lmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmr5.pfb>
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/
+texlive/2015/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/20
+15/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2015/texmf-d
+ist/fonts/type1/public/lm/lmsy7.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
+ype1/public/amsfonts/symbols/msbm10.pfb>
+Output written on report.pdf (12 pages, 271592 bytes).
 PDF statistics:
- 233 PDF objects out of 1000 (max. 8388607)
- 112 compressed objects within 2 object streams
+ 268 PDF objects out of 1000 (max. 8388607)
+ 136 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
