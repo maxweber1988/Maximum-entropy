@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1456059736 "report.tex" "report.pdf" "report" 1456059736
+["pdflatex"] 1456159340 "report.tex" "report.pdf" "report" 1456159341
   "./images/BCS_A_G_example.pdf" 1455738804 14358 0cec6922d021b060d952049a834aae30 ""
-  "./images/BCS_Bryan_classic_p_alpha.pdf" 1455979564 22558 63242b936282f4fdd6fce26db57d36fb ""
+  "./images/BCS_Bryan_classic_p_alpha.pdf" 1456063684 23884 2e34db7154dfb4ce4844bc8f9df7cc34 ""
   "./images/BCS_varying_alpha.pdf" 1455810477 21960 6e443f5f75e99d214c23e4f64504bc16 ""
   "./images/BCS_varying_cutoffs.pdf" 1455810489 22761 48b74884b5c6703a2563a1fface35418 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
@@ -107,14 +107,14 @@
   "/usr/local/texlive/2015/texmf-var/web2c/pdftex/pdflatex.fmt" 1444370464 3849859 3a1fde8bc2b37c946b65c457832aebc8 ""
   "/usr/local/texlive/2015/texmf.cnf" 1432479636 577 0d611272082f3cdb8e80e09a3c69cf07 ""
   "images/BCS_A_G_example.pdf" 1455738804 14358 0cec6922d021b060d952049a834aae30 ""
-  "images/BCS_Bryan_classic_p_alpha.pdf" 1455979564 22558 63242b936282f4fdd6fce26db57d36fb ""
+  "images/BCS_Bryan_classic_p_alpha.pdf" 1456063684 23884 2e34db7154dfb4ce4844bc8f9df7cc34 ""
   "images/BCS_varying_alpha.pdf" 1455810477 21960 6e443f5f75e99d214c23e4f64504bc16 ""
   "images/BCS_varying_cutoffs.pdf" 1455810489 22761 48b74884b5c6703a2563a1fface35418 ""
-  "numerics.tex" 1456059635 6950 0107a3a06c7294548e7c453e088afe6f ""
-  "report.aux" 1456059736 3783 e6a0ceede752a1c8164971bb9c65cd48 ""
-  "report.tex" 1456059734 1311 018b3430e5fe7ae04b3b8538dd110294 ""
-  "results.tex" 1456059680 3263 9e7a3112d26bbae807ddbb386f9b9e4b ""
-  "theory.tex" 1456059695 13988 ca1b61777dd2fc4ba38ed93aef3991b5 ""
+  "numerics.tex" 1456159338 8774 c2792e120a7d0360e28244d9cf33aff7 ""
+  "report.aux" 1456159341 3841 1f10981a86775872b3724aa345740ad4 ""
+  "report.tex" 1456138317 1311 018b3430e5fe7ae04b3b8538dd110294 ""
+  "results.tex" 1456063848 4486 95153c45a82c015beebfb38281d9d98e ""
+  "theory.tex" 1456156601 14049 d7adebf7e4aa50e4f0a7e52ab027b2ce ""
   (generated)
   "report.log"
   "report.pdf"

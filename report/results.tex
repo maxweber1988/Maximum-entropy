@@ -1,4 +1,4 @@
-In this section we investigate the performance of the Maximum entropy method by applying it to synthetic Greens function in order to recover the spectrum $A(\omega)$. We generate the Greens function data by first calculating the spectrum $A(\omega)$ and then using Equ. to calculate the Greens function given our spectrum and the kernel $K(\tau,\omega)$. After that we corrupt the Greens function by Gaussian noise as the ``real'' Greens function obtained by Quantum Monte Carlo methods always suffer from noise. In this evaluation we solely use the spectrum of the BCS superconductor for our investigation which can be calculated by 
+In this section we investigate the performance of the MEM by applying it to synthetic Greens function in order to recover the spectrum $A(\omega)$. We generate the Greens function data by first calculating the spectrum $A(\omega)$ and then using Equ. to calculate the Greens function given our spectrum and the kernel $K(\tau,\omega)$. After that we corrupt the Greens function by Gaussian noise as the ``real'' Greens function obtained by Quantum Monte Carlo methods always suffer from noise. In this evaluation we solely use the spectrum of the BCS superconductor for our investigation which can be calculated by 
 \begin{equation}
 	A(\omega) = 
 		\begin{cases}
@@ -16,7 +16,8 @@ In Fig. we show an example of the spectrum and the resulting Greens function for
 	\label{results:fig.1}
 \end{figure}
 \FloatBarrier
-The results obtained by Maximum entropy highly depend on the regularization parameter $\alpha$. We demonstrate the influence of $\alpha$ by estimating the spectrum shown in Fig. \ref{results:fig.1} for three different values for $\alpha = 0.5,2.5,10$. The results are shown in Fig. \ref{results:fig.2}
+During our investigation of MEM we encountered a high numerical instability of the method. Especially for low values of $\Sigma$ the algorithm resulted in either very inaccurate results or ``crashed'' due to numerical overflow in $\vec A$. This behavior is highly counter intuitive and one should put a great thought on the data before using this formalism. As mentioned we firstly encountered a lot of numerical overflows in $\vec A$ when we used the criterion $\vec{\delta u}^T T \vec{\delta u} \leq \sum m_i$proposed by Bryan. We managed to get rid of the overflows by changing the norm used to truncate the maximum step length by using the criterion $\parallel \vec A \parallel^2 \leq \sum_i m_i$. However, this only partially solved the problem, as now the algorithm does not converge to a acceptable solution in a great number of times. At the times when Bryan proposed this algorithm and Jarrell adapted it for analytic continuation of Quantum Monte Carlo data, the accessible accuracies for the data where much lower than they are nowadays. We simply expect this to be the reason that neither Bryan of Jarrell address this issue. Therefor, we restrict ourselves to a minimum error of $10^{-4}$ for the whole investigation. \newline
+The results obtained by MEM highly depend on the regularization parameter $\alpha$. We demonstrate the influence of $\alpha$ by estimating the spectrum shown in Fig. \ref{results:fig.1} for three different values for $\alpha = 0.5,2.5,10$. The results are shown in Fig. \ref{results:fig.2}
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.95\textwidth]{./images/BCS_varying_alpha.pdf}
@@ -39,3 +40,4 @@ Finally we show the difference between classic MEM and the Bryan method in choos
 	\caption{caption}
 	\label{results:fig.4}
 \end{figure}
+\FloatBarrier

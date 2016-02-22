@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.9)  21 FEB 2016 14:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.9)  22 FEB 2016 17:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -471,14 +471,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 24--27
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 [2] [3]
-Underfull \hbox (badness 10000) in paragraph at lines 122--125
+Underfull \hbox (badness 10000) in paragraph at lines 125--128
 
  []
 
 [4]
-Overfull \hbox (14.42311pt too wide) in paragraph at lines 195--202
+Overfull \hbox (14.42311pt too wide) in paragraph at lines 198--205
 \T1/lmr/m/n/10 The \T1/lmr/m/it/10 Clas-sic method \T1/lmr/m/n/10 is now to cho
-ose $[]$ which max-i-mizes (11[]). Set-ing $\OML/lmm/m/it/10 @[]p\OT1/lmr/m/n/1
+ose $[]$ which max-i-mizes (13[]). Set-ing $\OML/lmm/m/it/10 @[]p\OT1/lmr/m/n/1
 0 (\OML/lmm/m/it/10 \OMS/lmsy/m/n/10 j[]\OML/lmm/m/it/10 ; []\OT1/lmr/m/n/10 )
  =
  []
@@ -495,52 +495,52 @@ Package pdftex.def Info: ./images/BCS_A_G_example.pdf used on input line 14.
 File: ./images/BCS_varying_alpha.pdf Graphic file (type pdf)
 
 <use ./images/BCS_varying_alpha.pdf>
-Package pdftex.def Info: ./images/BCS_varying_alpha.pdf used on input line 22.
+Package pdftex.def Info: ./images/BCS_varying_alpha.pdf used on input line 23.
 (pdftex.def)             Requested size: 327.74895pt x 245.80959pt.
 
 <./images/BCS_varying_cutoffs.pdf, id=77, 578.16pt x 433.62pt>
 File: ./images/BCS_varying_cutoffs.pdf Graphic file (type pdf)
 
 <use ./images/BCS_varying_cutoffs.pdf>
-Package pdftex.def Info: ./images/BCS_varying_cutoffs.pdf used on input line 30
+Package pdftex.def Info: ./images/BCS_varying_cutoffs.pdf used on input line 31
 .
 (pdftex.def)             Requested size: 327.74895pt x 245.80959pt.
  [10 <./images/BCS_varying_alpha.pdf>]
-[11 <./images/BCS_varying_cutoffs.pdf>]
-<./images/BCS_Bryan_classic_p_alpha.pdf, id=163, 578.16pt x 433.62pt>
+<./images/BCS_Bryan_classic_p_alpha.pdf, id=118, 578.16pt x 433.62pt>
 File: ./images/BCS_Bryan_classic_p_alpha.pdf Graphic file (type pdf)
 
 <use ./images/BCS_Bryan_classic_p_alpha.pdf>
 Package pdftex.def Info: ./images/BCS_Bryan_classic_p_alpha.pdf used on input l
-ine 38.
+ine 39.
 (pdftex.def)             Requested size: 327.74895pt x 245.80959pt.
-) [12 <./images/BCS_Bryan_classic_p_alpha.pdf>] (./report.aux) ) 
+ [11 <./images/BCS_varying_cutoffs.pdf>]) [12 <./images/BCS_Bryan_classic_p_alp
+ha.pdf>] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 9104 strings out of 493089
- 170478 string characters out of 6134842
- 210425 words of memory out of 5000000
- 12474 multiletter control sequences out of 15000+600000
+ 9106 strings out of 493089
+ 170498 string characters out of 6134842
+ 210443 words of memory out of 5000000
+ 12476 multiletter control sequences out of 15000+600000
  59673 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,17n,37p,10374b,247s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/tex
-live/2015/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2015/texm
-f-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2015/texmf-dist/fon
-ts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvi
-ps/lm/lm-ec.enc}{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-mathe
-x.enc}</usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></us
-r/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/te
-xlive/2015/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2015
-/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2015/texmf-dis
-t/fonts/type1/public/lm/lmmi5.pfb></usr/local/texlive/2015/texmf-dist/fonts/typ
-e1/public/lm/lmmi7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/l
-m/lmr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmr5.pfb>
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/
-texlive/2015/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/20
-15/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2015/texmf-d
-ist/fonts/type1/public/lm/lmsy7.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
-ype1/public/amsfonts/symbols/msbm10.pfb>
-Output written on report.pdf (12 pages, 271592 bytes).
+{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/lm
+/lm-rm.enc}{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc
+}{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/loc
+al/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/201
+5/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}</usr/local/texlive/2015/texmf-di
+st/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
+ype1/public/lm/lmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publi
+c/lm/lmex10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmmi1
+0.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmmi5.pfb></usr
+/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></usr/local/texl
+ive/2015/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2015/te
+xmf-dist/fonts/type1/public/lm/lmr5.pfb></usr/local/texlive/2015/texmf-dist/fon
+ts/type1/public/lm/lmr7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
+lic/lm/lmri10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lms
+y10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></u
+sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb
+>
+Output written on report.pdf (12 pages, 281620 bytes).
 PDF statistics:
  268 PDF objects out of 1000 (max. 8388607)
  136 compressed objects within 2 object streams

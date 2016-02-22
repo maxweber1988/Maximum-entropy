@@ -35,9 +35,10 @@ an unnormalized positive additive density $\vec{A}$ is given by
  p(\vec{A}| \alpha, \vec{m}) \propto exp(\alpha S(\vec{m},\vec{A}))
 \end{displaymath}
 where $\alpha \in \mathbb{R}^+$ is a unknown parameter and S is the entropy of $\vec{A}$ relative to a default model $\vec{m}$
-\begin{displaymath}
+\begin{equation}
  S = \sum_{m=1}^{M} A_m -m_m -A_m log(A_m/m_m)
-\end{displaymath}
+ \label{eq:S(A,m)}
+\end{equation}
 
 \noindent It is noteworthy that on the one hand this restricts the parameter vector $\vec{A}$ to be possible to be interpreted as 
 \textit{positive additive density}. On the other hand the choice for $\alpha$ and $\vec{m}$ are of big influece and have to 
@@ -98,9 +99,11 @@ After this discretizaton we have a parameter vector $\vec{A} =(A_1,...,A_M)^T$ a
 As already mentioned to apply the Maximum Entropy Method the likelihood function hast to have the functional form 
 $ p(\vec{G}|\vec{A}) \propto exp(-L(\vec{F},\vec{G}))$ where $\vec{F}$ is leneary related to $\vec{A}$ by
 $\vec{F} = \textbf{K} \vec{A}$ what is already fulfilled by~(\ref{eq:kernel_as_reiman_sum}). For QMC data it is 
-possible to achieve a multivariate gaussian shape of the likelihood function, such that $L = 1/2 ((\vec{G} - \vec{F})^T 
-diag\{1/ \sigma_n^2 \} (\vec{G} - \vec{F}))$.
-
+possible to achieve a multivariate gaussian shape of the likelihood function, such that .
+\begin{equation}
+	L = 1/2 ((\vec{G} - \vec{F})^T diag\{1/ \sigma_n^2 \} (\vec{G} - \vec{F}))
+	\label{eq:L(G)}
+\end{equation}
 Since for the purpose of this educational project work no real QMC data was available we will only give a short overview of
 the main aspects how QMC data has to be manipulated in principle to reach the desired form of the likelihood function.\\
 For each of the N imaginary times $\tau_n$, $G(\tau_n) = G_n$ is calculated a plenty of times in $N_{QMC}$ QMC steps, with results $G_n^i$ and each with a different error. 
@@ -174,7 +177,7 @@ case observing the data $\vec{G}$ given $\alpha$ and $\vec{m}$.
  p(\vec{A}|\alpha,\vec{m},\vec{G}) \propto  exp(\alpha S - L(\vec{F},\vec{G})) = exp(Q(\vec{A}))
 \end{equation}
 Therefore for given $\alpha$ and $\vec{m}$ we can calculate the most probable $\vec{\hat{A}}$. However this tells us nothing about
-the plausibility of the values for $\alpha$ and $\vec{m}$ which have significat influence of the obtained results.
+the plausibility of the values for $\alpha$ and $\vec{m}$ which have significant influence of the obtained results.
 
 \subsubsection{Approaches to treat $\alpha$}
 

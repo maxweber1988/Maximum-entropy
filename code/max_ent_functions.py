@@ -127,7 +127,7 @@ def max_likelihood_estimate(G,V_singular,U_singular,Sigma_singular):
 	count1 = 1
 	max_iter = 1000
 
-	while diff > 1e-10 and count1 <= max_iter:
+	while diff > 1e-8 and count1 <= max_iter:
 		A_appr = m * np.exp(np.dot(U,u))
 		inv_cov = (1. / np.diagonal(Cov)**2)
 		inv_cov_mat = np.diag(inv_cov)
@@ -167,7 +167,7 @@ def root_finding_diag(u, m, alpha, V, Sigma, U, G, Cov, dw,max_iter1 = 1000, max
 	:return:
 	"""
 	s=len(u)
-	max_val = 5 * np.sum(m)
+	max_val = 10 * np.sum(m)
 	T_s = np.dot(V,np.dot(Sigma,U.T))
 	diff = 1.
 
@@ -206,6 +206,7 @@ def root_finding_diag(u, m, alpha, V, Sigma, U, G, Cov, dw,max_iter1 = 1000, max
 		Jac = np.dot(M,K) + np.eye(s) * alpha
 		h = np.abs(np.dot(F_u.T,F_u))/np.abs(np.dot(F_u.T,np.dot(Jac,F_u)))
 		mu = 1./h
+		print(mu,np.linalg.norm(f_appr-f_old))
 		while np.linalg.norm(f_appr-f_old) > max_val and count2 < max_iter2:
 			B = (alpha + count2 * mu)*np.diag(np.ones((s))) + Lambda
 			c_vec = -alpha * np.dot(Y_inv,u)-np.dot(Y_inv,g)
