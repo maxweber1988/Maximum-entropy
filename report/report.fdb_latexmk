@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1456484382 "report.tex" "report.pdf" "report" 1456484383
+["pdflatex"] 1456492485 "report.tex" "report.pdf" "report" 1456492486
   "./images/BCS_A_G_example.pdf" 1456411458 1166 5544eb5d103f21b1404bebc3dbb1f21a ""
-  "./images/BCS_Bryan_classic_p_alpha.pdf" 1456482603 25264 7eae1dac532961fac8ee765e7699a17f ""
-  "./images/BCS_annealing_example.pdf" 1456480201 26304 20714206ef38bd2386e6186735102636 ""
+  "./images/BCS_Bryan_classic_p_alpha.pdf" 1456491842 25437 7db236368e7e6995a8bf890848163a46 ""
+  "./images/BCS_annealing_example.pdf" 1456492414 27425 0c2beb9382a52e3439382585ac1aaa81 ""
   "./images/BCS_delta_peak_example.pdf" 1456479592 33944 42841f09a2c88e0fc623ce038e310b06 ""
   "./images/BCS_varying_alpha.pdf" 1456309451 20855 b4a4325a025bfaa7705dc2fffb390f0e ""
   "./images/BCS_varying_cutoffs.pdf" 1456405528 25253 143c3d27310c7ac35653a2eb2dff7104 ""
@@ -110,16 +110,16 @@
   "/usr/local/texlive/2015/texmf-var/web2c/pdftex/pdflatex.fmt" 1444370464 3849859 3a1fde8bc2b37c946b65c457832aebc8 ""
   "/usr/local/texlive/2015/texmf.cnf" 1432479636 577 0d611272082f3cdb8e80e09a3c69cf07 ""
   "images/BCS_A_G_example.pdf" 1456411458 1166 5544eb5d103f21b1404bebc3dbb1f21a ""
-  "images/BCS_Bryan_classic_p_alpha.pdf" 1456482603 25264 7eae1dac532961fac8ee765e7699a17f ""
-  "images/BCS_annealing_example.pdf" 1456480201 26304 20714206ef38bd2386e6186735102636 ""
+  "images/BCS_Bryan_classic_p_alpha.pdf" 1456491842 25437 7db236368e7e6995a8bf890848163a46 ""
+  "images/BCS_annealing_example.pdf" 1456492414 27425 0c2beb9382a52e3439382585ac1aaa81 ""
   "images/BCS_delta_peak_example.pdf" 1456479592 33944 42841f09a2c88e0fc623ce038e310b06 ""
   "images/BCS_varying_alpha.pdf" 1456309451 20855 b4a4325a025bfaa7705dc2fffb390f0e ""
   "images/BCS_varying_cutoffs.pdf" 1456405528 25253 143c3d27310c7ac35653a2eb2dff7104 ""
   "images/BCS_varying_noise.pdf" 1456482833 22569 9f3e266d4fee970bde78d58fe80c5fd0 ""
   "numerics.tex" 1456307105 8893 4d9ce4deabb134244a560bb6f73ed3b7 ""
-  "report.aux" 1456484382 4352 5673f95776efbf9cc1fd99cd9ddb02d0 ""
+  "report.aux" 1456492485 4352 5673f95776efbf9cc1fd99cd9ddb02d0 ""
   "report.tex" 1456481424 1254 1c9b04ccad20d751b811a5bfc048d59b ""
-  "results.tex" 1456484381 8888 033c912e5cffd409048036f82e69fe0f ""
+  "results.tex" 1456491842 8889 fcfa65f6b28e6e2d2cd06686df8d9af0 ""
   "theory.tex" 1456307146 14050 f4033040ab2e4cb60fc77a5d32b97149 ""
   (generated)
   "report.log"

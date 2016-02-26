@@ -171,7 +171,7 @@ tau = np.arange(0.,Ntau * dtau,dtau)
 # G = np.dot(K,A)
 
 # # add relative noise to G
-# std = 1e-4 * G
+# std = 1e-2 * G
 # G_noisy = G + np.random.normal(0.,std,len(G))
 # Cov = np.diag(std)
 
@@ -182,7 +182,7 @@ tau = np.arange(0.,Ntau * dtau,dtau)
 # Sigma = np.diag(sig_vec)
 
 # # find important singular values and reduce dimensions accordingly
-# s = len(sig_vec[sig_vec>1e-8])
+# s = len(sig_vec[sig_vec>1e-13])
 
 # #reduce all matrices to singular space
 # U = U_T.T
@@ -191,7 +191,7 @@ tau = np.arange(0.,Ntau * dtau,dtau)
 # Sigma_s = Sigma[0:s,0:s]
 # K_s = np.dot(V_s,np.dot(Sigma_s,U_s.T))
 
-# alpharange = np.arange(.1,20.1,.1)
+# alpharange = np.arange(.5,20.1,.1)
 # p_alpha = np.zeros(len(alpharange))
 # A_mat = np.zeros((Nw,len(alpharange)))
 # for i in xrange(len(alpharange)):
@@ -205,11 +205,11 @@ tau = np.arange(0.,Ntau * dtau,dtau)
 # 	A_mat[:,i] = A_est
 # 	p_alpha[i] = calc_p_alpha(A_est,alpha,Cov,G_noisy,K_s,m)
 # p_alpha = p_alpha/(np.sum(p_alpha))
-# np.save('./data/A_mat.npy',A_mat)
-# np.save('./data/p_alpha.npy',p_alpha)
-# p_alpha = np.load('./data/p_alpha.npy')*0.1
-# print(np.sum(p_alpha))
-# A_mat = np.load('./data/A_mat.npy')
+# # np.save('./data/A_mat.npy',A_mat)
+# # np.save('./data/p_alpha.npy',p_alpha)
+# # p_alpha = np.load('./data/p_alpha.npy')*0.1
+# # print(np.sum(p_alpha))
+# # A_mat = np.load('./data/A_mat.npy')
 # argmax_alpha = np.argmax(p_alpha)
 
 # A_classic = A_mat[:,argmax_alpha]
@@ -228,63 +228,64 @@ tau = np.arange(0.,Ntau * dtau,dtau)
 # ax[1].set_ylabel(r'$A(\omega)$')
 # ax[1].set_xlim(0,6)
 # ax[1].legend()
-#ax[1].set_xlim(0,6)
+# ax[1].set_xlim(0,6)
 # plt.tight_layout()
-# plt.savefig('../report/images/BCS_Bryan_classic_p_alpha.pdf')
+# # plt.savefig('../report/images/BCS_Bryan_classic_p_alpha.pdf')
 # plt.show()
+
 ###########################################################
 # varying noise
 ###########################################################
 
-W = 10.
-Delta = .9
-alpha = 5.
+# W = 10.
+# Delta = .9
+# alpha = 5.
 
-# #calculate BCS spectrum
-A = BCS_spectrum(beta,dw,Delta,W)
-# A = calc_A(dw,Nw,[0.],[2.],[1.])
-# calculate K, G
-K = calc_K(dw,Nw,dtau,Ntau,beta)
-G = np.dot(K,A)
-noise_range = np.arange(1.,5.,1.)
-fig,ax = plt.subplots(1,1,frameon = False)
-for i in xrange(len(noise_range)):
-	print(noise_range[i])
-	# add relative noise to G
-	std = 10 ** (-noise_range[i]) * G
-	G_noisy = G + np.random.normal(0.,std,len(G))
-	Cov = np.diag(std)
+# # #calculate BCS spectrum
+# A = BCS_spectrum(beta,dw,Delta,W)
+# # A = calc_A(dw,Nw,[0.],[2.],[1.])
+# # calculate K, G
+# K = calc_K(dw,Nw,dtau,Ntau,beta)
+# G = np.dot(K,A)
+# noise_range = np.arange(1.,5.,1.)
+# fig,ax = plt.subplots(1,1,frameon = False)
+# for i in xrange(len(noise_range)):
+# 	print(noise_range[i])
+# 	# add relative noise to G
+# 	std = 10 ** (-noise_range[i]) * G
+# 	G_noisy = G + np.random.normal(0.,std,len(G))
+# 	Cov = np.diag(std)
 
-	# singular value decomposition of K = V * Sigma * transpose(U)
-	V,sig_vec,U_T = np.linalg.svd(K)
+# 	# singular value decomposition of K = V * Sigma * transpose(U)
+# 	V,sig_vec,U_T = np.linalg.svd(K)
 
-	# create sigma matrix for convenience out of sig_vec
-	Sigma = np.diag(sig_vec)
-	# find important singular values and reduce dimensions accordingly
-	s = len(sig_vec[sig_vec>1e-13])
-	print(s)
-	#reduce all matrices to singular space
-	U = U_T.T
-	U_s = U[:,0:s]
-	V_s = V[:,0:s]
-	Sigma_s = Sigma[0:s,0:s]
-	K_s = np.dot(V_s,np.dot(Sigma_s,U_s.T))
+# 	# create sigma matrix for convenience out of sig_vec
+# 	Sigma = np.diag(sig_vec)
+# 	# find important singular values and reduce dimensions accordingly
+# 	s = len(sig_vec[sig_vec>1e-13])
+# 	print(s)
+# 	#reduce all matrices to singular space
+# 	U = U_T.T
+# 	U_s = U[:,0:s]
+# 	V_s = V[:,0:s]
+# 	Sigma_s = Sigma[0:s,0:s]
+# 	K_s = np.dot(V_s,np.dot(Sigma_s,U_s.T))
 
-	u=np.ones(s)
-	u_sol= root_finding_diag(u = u,m = m, alpha = alpha, V = V_s, Sigma = Sigma_s,U = U_s, G = G_noisy, Cov = Cov, dw = dw)
+# 	u=np.ones(s)
+# 	u_sol= root_finding_diag(u = u,m = m, alpha = alpha, V = V_s, Sigma = Sigma_s,U = U_s, G = G_noisy, Cov = Cov, dw = dw)
 
-	A_est = m * np.exp(np.dot(U_s,u_sol))
-	ax.plot(w,A_est,label='estimated spectrum noise = 1e-{0}'.format(noise_range[i]))
+# 	A_est = m * np.exp(np.dot(U_s,u_sol))
+# 	ax.plot(w,A_est,label='estimated spectrum noise = 1e-{0}'.format(noise_range[i]))
 
-	ax.set_xlabel(r'$\omega$')
-	ax.set_ylabel(r'$A(\omega)$')
-ax.plot(w,A,label='original spectrum')
-ax.legend()
-ax.set_xlim(0,6)
-plt.tight_layout()
+# 	ax.set_xlabel(r'$\omega$')
+# 	ax.set_ylabel(r'$A(\omega)$')
+# ax.plot(w,A,label='original spectrum')
+# ax.legend()
+# ax.set_xlim(0,6)
+# plt.tight_layout()
 
-plt.savefig('../report/images/BCS_varying_noise.pdf')
-plt.show()
+# plt.savefig('../report/images/BCS_varying_noise.pdf')
+# plt.show()
 
 ############################################################
 # influence of m
@@ -394,62 +395,62 @@ plt.show()
 # annealing approach
 ###########################################################
 
-# W = 10.
-# Delta = .9
+W = 10.
+Delta = .9
 
-# #calculate BCS spectrum
-# A = BCS_spectrum(beta,dw,Delta,W)
+#calculate BCS spectrum
+A = BCS_spectrum(beta,dw,Delta,W)
 
-# # calculate K, G
-# K = calc_K(dw,Nw,dtau,Ntau,beta)
-# G = np.dot(K,A)
+# calculate K, G
+K = calc_K(dw,Nw,dtau,Ntau,beta)
+G = np.dot(K,A)
 
-# # add relative noise to G
-# std = G * 1e-4
-# G_noisy = G + np.random.normal(0.,std,len(G))
-# Cov = np.diag(std)
+# add relative noise to G
+std = G * 1e-4
+G_noisy = G + np.random.normal(0.,std,len(G))
+Cov = np.diag(std)
 
-# # singular value decomposition of K = V * Sigma * transpose(U)
-# V,sig_vec,U_T = np.linalg.svd(K)
-# U = U_T.T
-# # create sigma matrix for convenience out of sig_vec
-# Sigma = np.diag(sig_vec)
+# singular value decomposition of K = V * Sigma * transpose(U)
+V,sig_vec,U_T = np.linalg.svd(K)
+U = U_T.T
+# create sigma matrix for convenience out of sig_vec
+Sigma = np.diag(sig_vec)
 
-# fig,ax = plt.subplots(2,1,frameon=False,sharex=True)
-# ax[0].plot(w,A)
-# ax[1].plot(w,A)
-# for i in xrange(101):
-# 	print(i)
-# 	if i != 0:
-# 		m = A_est
-# 	# find important singular values and reduce dimensions accordingly
-# 	s = len(sig_vec[sig_vec>1e-13])
+fig,ax = plt.subplots(2,1,frameon=False,sharex=True)
+ax[0].plot(w,A)
+ax[1].plot(w,A)
+for i in xrange(101):
+	print(i)
+	if i != 0:
+		m = A_est
+	# find important singular values and reduce dimensions accordingly
+	s = len(sig_vec[sig_vec>1e-13])
 
-# 	#reduce all matrices to singular space
-# 	U_s = U[:,0:s]
-# 	V_s = V[:,0:s]
-# 	Sigma_s = Sigma[0:s,0:s]
-# 	K_s = np.dot(V_s,np.dot(Sigma_s,U_s.T))
-# 	alpha = 4.
+	#reduce all matrices to singular space
+	U_s = U[:,0:s]
+	V_s = V[:,0:s]
+	Sigma_s = Sigma[0:s,0:s]
+	K_s = np.dot(V_s,np.dot(Sigma_s,U_s.T))
+	alpha = 4.
 
-# 	# create starting values for u and start root finding recursively
-# 	u=np.ones(s)
-# 	u_sol= root_finding_diag(u = u,m = m, alpha = alpha, V = V_s, Sigma = Sigma_s,U = U_s, G = G_noisy, Cov = Cov, dw = dw)
+	# create starting values for u and start root finding recursively
+	u=np.ones(s)
+	u_sol= root_finding_diag(u = u,m = m, alpha = alpha, V = V_s, Sigma = Sigma_s,U = U_s, G = G_noisy, Cov = Cov, dw = dw)
 
-# 	A_est = m * np.exp(np.dot(U_s,u_sol))
-# 	if i < 3:
-# 		ax[0].plot(w,A_est,label='{0}. recursion'.format(i))
-# 	if i% 20 == 0:
-# 		plt.plot(w,A_est,label='{0}. recursion'.format(i))
-# ax[0].legend()
-# ax[0].set_ylabel(r'$A(\omega)$')
-# ax[0].set_xlim(0,7)
-# ax[1].legend()
-# ax[1].set_xlabel(r'$\omega$')
-# ax[1].set_ylabel(r'$A(\omega)$')
-# ax[1].set_xlim(0,7)
-# plt.savefig('../report/images/BCS_annealing_example.pdf')
-# plt.show()
+	A_est = m * np.exp(np.dot(U_s,u_sol))
+	if i < 3:
+		ax[0].plot(w,A_est,label='{0}. recursion'.format(i))
+	if i% 20 == 0:
+		plt.plot(w,A_est,label='{0}. recursion'.format(i))
+ax[0].legend()
+ax[0].set_ylabel(r'$A(\omega)$')
+ax[0].set_xlim(0,7)
+ax[1].legend()
+ax[1].set_xlabel(r'$\omega$')
+ax[1].set_ylabel(r'$A(\omega)$')
+ax[1].set_xlim(0,7)
+plt.savefig('../report/images/BCS_annealing_example_new.pdf')
+plt.show()
 
 ############################################################
 # illustration of the influence of alpha
