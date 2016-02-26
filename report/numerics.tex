@@ -1,4 +1,8 @@
-In this section we describe the numerical algorithm to perform the analytic continuation of quantum Monte Carlo data by the maximum entropy method. As described in Sec. \ref{sec:theory} the quantity $Q = \alpha S - L$ has to be maximized with respect to $\vec A$ in order to find the most probable $\vec A$ given the noisy Greens function $\vec G$. To maximize Q we calculate the gradient of Q with respect to $\vec A$ and set it to zero:
+In this section we describe the numerical algorithm to perform the analytic continuation of quantum Monte Carlo data by the maximum entropy method described by Bryan.
+Also we give an overview over problems we encountered with the algorithm and modifications we propose to overcome this problems.
+\subsection*{Numerical algorithm proposed by Bryan}
+As described in Sec. \ref{sec:theory} the quantity $Q = \alpha S - L$ has to be maximized with respect to $\vec A$ in order to find the most probable $\vec A$ given the noisy Greens function $\vec G$.\newline
+To maximize Q we calculate the gradient of Q with respect to $\vec A$ and set it to zero:
 \begin{equation}
 	\vec\nabla Q =  \alpha \vec\nabla S - \vec\nabla L = 0
 	\label{numerical_algorithm:equ.1}
@@ -13,21 +17,27 @@ where:
 	\vec F = \mathbf{K} \vec A \text{ and } \vec \nabla L = \frac{\partial \vec F}{\partial \vec A} \frac{\partial L}{\partial \vec F} = \mathbf{K}^T \frac{\partial L}{\partial \vec F}
 	\label{numerical_algorithm:equ.3}
 \end{equation}
-Now, a singular value decomposition of $\mathbf{K}$ is performed with $\mathbf{K} = \mathbf{V} \mathbf{\Sigma} \mathbf{U}^T$. Please note that both $\mathbf{V}$ and $\mathbf{U}$ are orthonormal matrices and therefor $\mathbf{V}^{-1}=\mathbf{V}^T$ and $\mathbf{U}^{-1}=\mathbf{U}^T$. Then Equ. \ref{numerical_algorithm:equ.3} can be rewritten as
+Now, a singular value decomposition of $\mathbf{K}$ is performed with $\mathbf{K} = \mathbf{V} \mathbf{\Sigma} \mathbf{U}^T$. Please note that both $\mathbf{V}$ and $\mathbf{U}$ are orthonormal matrices and therefor $\mathbf{V}^{-1}=\mathbf{V}^T$ and $\mathbf{U}^{-1}=\mathbf{U}^T$.\newline
+Then Equ. \ref{numerical_algorithm:equ.3} can be rewritten as
 \begin{equation}
 	-\alpha \log \bigg(\frac{\vec A}{\vec m}\bigg) = \mathbf{U} \mathbf{\Sigma} \mathbf{V}^T \frac{\partial L}{\partial \vec F} 
 	\label{numerical_algorithm:equ.4}
 \end{equation}
 where Equ. \ref{numerical_algorithm:equ.4} has to be read component wise.
-Here $\mathbf{\Sigma}$ has only components on its diagonal which are called the singular values of $\mathbf{K}$. By convention the singular values are ordered by magnitude. Defining $\vec u = \alpha^{-1} \mathbf{\Sigma} \mathbf{V}^T \frac{\partial L}{\partial \vec F}$ $\vec A$ can be represented by $\vec u$ as
+Here $\mathbf{\Sigma}$ has only components on its diagonal which are called the singular values of $\mathbf{K}$. By convention the singular values are ordered by magnitude.\newline
+Defining $\vec u = \alpha^{-1} \mathbf{\Sigma} \mathbf{V}^T \frac{\partial L}{\partial \vec F}$, $\vec A$ can be represented by $\vec u$ as
 \begin{equation}
 	A_i = m_i \exp \Big(\sum U_{in}u_n\Big)
 	\label{numerical_algorithm:equ.5}
 \end{equation}
-Equ. \ref{numerical_algorithm:equ.5} has the advantage that it automatically enforces positivity for $\vec A$.
+Equ. \ref{numerical_algorithm:equ.5} has the advantage that it automatically enforces positivity for $\vec A$.\newline
 Now Bryan argues that unless $\mathbf{K}$ is of full rank the components of $\vec u$ will not be independent.
-Because of the limited precision of the computer and the singular value decomposition some of the singular values of $\mathbf{K}$ will effectively be zero. The search for the optimal $\vec u$ can therefor be reduced to the nonzero singular values of $\mathbf{K}$. Let $s$ be the number of nonzero singular values the search can then be limited to the $s$-dimensional space which Bryan calls the singular space. 
-Bryan's method therefor first reduces all relevant matrices to the singular space. The vector $\vec u$ is now of length $s$, the number of columns of $\mathbf{V}$ and $\mathbf{U}$ are reduced to $s$ and $\mathbf{\Sigma}$ is now a $s \times s$ square matrix. Making use of Equ. \ref{numerical_algorithm:equ.5} and $\mathbf{K} = \mathbf{V} \mathbf{\Sigma} \mathbf{U}^T$ Equ. \ref{numerical_algorithm:equ.2} can be rewritten as:
+Because of the limited precision of the computer and the singular value decomposition some of the singular values of $\mathbf{K}$ will effectively be zero.
+The search for the optimal $\vec u$ can therefor be reduced to the nonzero singular values of $\mathbf{K}$.\newline
+Let $s$ be the number of nonzero singular values the search can then be limited to the $s$-dimensional space which Bryan calls the singular space. 
+Bryan's method therefor first reduces all relevant matrices to the singular space.
+The vector $\vec u$ is now of length $s$, the number of columns of $\mathbf{V}$ and $\mathbf{U}$ are reduced to $s$ and $\mathbf{\Sigma}$ is now a $s \times s$ square matrix.\newline
+Making use of Equ. \ref{numerical_algorithm:equ.5} and $\mathbf{K} = \mathbf{V} \mathbf{\Sigma} \mathbf{U}^T$ Equ. \ref{numerical_algorithm:equ.2} can be rewritten as:
 \begin{equation}
 	-\alpha \mathbf{U} \vec u = \mathbf{U} \mathbf{\Sigma} \mathbf{V}^T \frac{\partial L}{\partial \vec F}
 	\label{numerical_algorithm:equ.6}
@@ -54,16 +64,14 @@ With $\mathbf{W} = \frac{\partial^2 L}{\partial^2 \vec F}$, $\mathbf{M} = \mathb
 	\label{numerical_algorithm:equ.10}
 \end{equation}
 At each iteration step of the Newton search the step length $\vec{\delta u}$ muss be restricted for the stability of the algorithm.
-Therefor, a Levenberg-Marquardt parameter $\mu$ is added in Equ. \ref{numerical_algorithm:equ.10} to ensure stability.
+Therefor, a Levenberg-Marquardt parameter $\mu$ is added in Equ. \ref{numerical_algorithm:equ.10} to ensure stability.\newline
 Bryan proposes 
 \begin{equation}
 	\vec{\delta u}^T \frac{\partial \vec A}{\partial \vec u}\mathbf{diag}\{\frac{1}{A_i}\}\frac{\partial \vec A}{\partial \vec u}
 	\vec{\delta u}^T = \vec{\delta u}^T \mathbf{T} \vec{\delta u} \leq \sum m_i
+	\label{numerical_algorithm:Bryans_norm}
 \end{equation}
 as a maximum step length for the algorithm.\newline
-Remark:\newline
-\textit{However, we found that sometimes even if this criterion is fulfilled the algorithm can be instable due to numerical overflow. The reason for this we assume to be the invalid linear approximation of $\vec {\delta A} = \mathbf{U}^T \vec A\vec{\delta u}$, i.e. $\vec{\delta A} << \vec A(\vec u + \vec{\delta u}) - \vec A(\vec u)$. 
-Therefor, we use the criterion $\parallel \vec A \parallel^2 \leq \sum_i m_i$. In addition we need to choose a reasonable value for the Lewenberg-Marquardt parameter $\mu$. For large values of $\mu$ the Newton search becomes the method of steepest descent. For $\mu >> \alpha: (\mu \mathbf{I} + \mathbf{J})\vec{\delta u} = \nabla Q \rightarrow \mu \mathbf{I} \vec{\delta u} = \nabla Q$. The method for steepest descent reads as $\vec{\delta u} = h \nabla Q$. Therefor we can identify $\mu$ as $h^{-1}$. As the method of steepest descent is a first order approximation algorithm we need to choose $h$ in a way that this approximation stays valid. We therefor demand that the relative error caused by neglecting second order terms $r = 0.1$. Where r is calculated as $r = (h\nabla Q^T \mathbf{J}\nabla Q)^{-1}\nabla Q^T\nabla Q$.}\newline
 Now the Newton search can be made more efficient by diagonalizing Equ. \ref{numerical_algorithm:equ.10}. First we diagonalize $\mathbf{T}$:
 \begin{equation}
 	\begin{gathered}
@@ -103,4 +111,37 @@ Now Equ. \ref{numerical_algorithm:equ.10} can be rewritten to
 	(\alpha + \mu)\vec{\delta u} = -\alpha \vec u - g - \mathbf{M}\mathbf{Y}^{-T}\mathbf{Y}^{-1} \vec{\delta u}
 	\label{numerical_algorithm:equ.16}
 \end{equation}
-So to finally we first solve Equ. \ref{numerical_algorithm:equ.15} for $\mathbf{Y}^{-1} \vec{\delta u}$, use it in Equ. \ref{numerical_algorithm:equ.16} to solve for $\vec{\delta u}$ and calculate the new value for $\vec u_{n+1} = \vec u_{n} + \vec{\delta u}$. The iteration is terminated if $\sum_i |\vec u_{n+1} - \vec u_{n}| \leq 10^{-10}$. There exists however no deeper motivation for this criterion. We should notice that in practice Equ. \ref{numerical_algorithm:equ.14} can be ill defined due to very small $\gamma_i$ values. But only $\mathbf{Y}^{-1}$ is needed in all the calculations and it is straight forward to find the expression $\mathbf{Y}^{-1} = \mathbf{R}^T \mathbf{diag} \{ \gamma_i^{\frac{1}{2}}\}\mathbf{P}^T$ because of the orthogonality of $\mathbf{P}$ and $\mathbf{R}$.
+So to finally we first solve Equ. \ref{numerical_algorithm:equ.15} for $\mathbf{Y}^{-1} \vec{\delta u}$, use it in Equ. \ref{numerical_algorithm:equ.16} to solve for $\vec{\delta u}$ and calculate the new value for $\vec u_{n+1} = \vec u_{n} + \vec{\delta u}$. The iteration is terminated if $\sum_i |\vec u_{n+1} - \vec u_{n}| \leq 10^{-8}$. There exists however no deeper motivation for this criterion. 
+We choose this value both for the sake of fast convergence and because we have seen no situations where the results of the algorithm improve further for lower values.\newline
+We should notice that in practice Equ. \ref{numerical_algorithm:equ.14} can be ill defined due to very small $\gamma_i$ values. But only $\mathbf{Y}^{-1}$ is needed in all the calculations and it is straight forward to find the expression $\mathbf{Y}^{-1} = \mathbf{R}^T \mathbf{diag} \{ \gamma_i^{\frac{1}{2}}\}\mathbf{P}^T$ because of the orthogonality of $\mathbf{P}$ and $\mathbf{R}$.
+\subsection*{Difficulties with the algorithm and proposed solutions}
+Now we describe the difficulties due to numerical instabilities we had with the algorithm and propose solutions to overcome these.
+\subsubsection*{Numerical overflow in $\vec A$}
+In every iteration step of the newton search we calculate $\vec A$ according to Equ. \ref{numerical_algorithm:equ.5}.
+Due to the exponential there is a risk of numerical overflow due to large step sizes $\vec{\delta u}$. 
+We found that often even if Equ. \ref{numerical_algorithm:Bryans_norm} is fulfilled the algorithm can be instable due to numerical overflow in $\vec A$.
+The reason for this we assume to be the invalid linear approximation of $\vec {\delta A} = \mathbf{U}^T \vec A\vec{\delta u}$, i.e. $\vec{\delta A} << \vec A(\vec u + \vec{\delta u}) - \vec A(\vec u)$. 
+Therefor, we use the criterion $\parallel \vec{\delta A} \parallel^2 \leq \sum_i m_i$.
+\subsubsection*{Eigenvalue computation}
+Often we encountered complex eigenvalues returned by the numpy.linalg.eig routine for symmetric matrices.
+As the eigenvalues of a symmetric real matrix have to be real we suspect this to be a issue with the standard eigenvalue computation routine of numpy.
+After using the numpy.linalg.eigh routine which enforces real eigenvalues for symmetric matrices we managed to get rid of this problem.
+Furthermore in some cases one of the eigenvalues of $\mathbf{T}$ was negative. This causes a problem in the square root in Eq. \ref{numerical_algorithm:equ.12}. Because this negative eigenvalue was very small (of the order of $10^{-14}$) we set it to zero if it occurred. We suspect the reason for this value to be due to numerical errors in the eigenvalue calculation routine especially because of its low magnitude.
+\subsubsection*{Lewenberg-Marquardt parameter}
+Unfortunately, both Bryan and Jarrell give no indication on how to choose the Lewenberg-Marquardt parameter for the newton search $\mu$.
+Clearly it is reasonable to choose a value of $\mu$ driven by data.
+Therefor, we motivate our choice of $\mu$ by the following idea:\newline
+For large values of $\mu$ the Newton search becomes the method of steepest descent ($\mu >> \alpha: (\mu \mathbf{I} + \mathbf{J})\vec{\delta u} = \nabla Q \rightarrow \mu \mathbf{I} \vec{\delta u} = \nabla Q$). Independent of this limit the method for steepest descent reads as $\vec{\delta u} = h \nabla Q$. Therefor, we can identify $\mu$ as $h^{-1}$.\newline
+As the method of steepest descent is a first order approximation algorithm we need to choose $h$ in a way that this approximation stays valid. We therefor demand that the relative error $r$ caused by neglecting the second order terms should be equal to 0.1. We calculate r by $r = (h\nabla Q^T \mathbf{J}\nabla Q)^{-1}\nabla Q^T\nabla Q$. This equation gives us the needed relation between $r$ and $h$ and therefor also $\mu$.
+\subsubsection*{MEM for weak noise}
+During our investigation of MEM we encountered a high numerical instability of the method especially for low values of the relative standard deviation of the Gaussian noise distribution $\sigma$.
+The algorithm  ``crashed'' due to numerical overflow in $\vec A$ although we applied our improved criterion for the maximum step length $\parallel \vec{\delta A} \parallel^2 \leq \sum_i m_i$.
+We at least partly suspect the reason for that to be the matrix $\mathbf{W} = \mathbf{diag}((\sigma G(\tau))^{-2})$ which has already elements of the order of $10^{14}$ for $\sigma = 10^{-4}$.
+This behavior is highly counter intuitive at first because for ``improving'' data numerical instabilities arise.
+At the times when Bryan proposed this algorithm and Jarrell adapted it for analytic continuation of Quantum Monte Carlo data, the accessible accuracies for the data were supposedly much lower than they are nowadays. We simply expect this to be the reason that neither Bryan of Jarell address this issue and restrict ourselves to a maximum accuracy of $\sigma = 10^{-4}$.
+\subsubsection*{Impact of $\alpha$}
+Ab interesting property rather than a problem worth mentioning is that the stability of the algorithm is dependent on $\alpha$.
+In some cases it is possible even for relatively small error bars to stabilize the algorithm by choosing a large alpha.
+But this gives rise to the problem that we cannot estimate the spectrum $A(\omega$ over a large range of $\alpha$ independent of the noise present in the data.
+In this case we can only propose solutions for single values or over small ranges of $\alpha$.
+However, we find this fact worth mentioning because we found empirically that the resulting spectra tend to not change much for increasing $\alpha$ after a certain value. Therefor, if one needs to get a result for data which causes instabilities in the algorithm it could be worth trying to increase $\alpha$ to stabilize it.

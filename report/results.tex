@@ -7,7 +7,7 @@ In this section we investigate the performance of the MEM by applying it to synt
 		\end{cases}
 	\label{results:equ.1}
 \end{equation}
-where $W$ denotes the bandwidth and $2\Delta$ the gap magnitude. The spectrum of the BCS superconductor is chosen because it contains a flat region, one steep peak and a sharp gap edge. This variety of features makes the spectrum an ideal test case.
+where $W$ denotes the bandwidth and $2\Delta$ the gap magnitude. We vary $\omega$ from 0 to 10 in 800 steps and $\tau$ from 0 to $\frac{\beta}{2}$ in 1000 steps for $\beta = 10$. The spectrum of the BCS superconductor is chosen because it contains a flat region, one steep peak and a sharp gap edge. This variety of features makes the spectrum an ideal test case.
 In Fig. we show an example of the spectrum and the resulting Greens function for $W = 0.9$ and $\Delta = 10$.
 \begin{figure}[htbp]
 	\centering
@@ -63,27 +63,20 @@ Next we demonstrate the influence of the relative noise in the green's function 
 As one would expect in general the estimation of the spectrum becomes better for decreasing noise. For a standard deviation of 10\% of the true greens function data we hardly recover the main features of the true spectrum. For values of 1\%, 0.1\%  and 0.01\% the sharp peak at the beginning and the edge at the right end of the true spectrum becomes more and more captured by the estimated spectrum.
 
 \subsection*{Influence of the default model}
-Finally we investigate the impact of the default model $\vec m$ on the performance of the MEM. On the one hand we show the difference for two noninformative, i.e. constant, models which differ only by a constant factor of 10. On the other hand we introduce information about the true spectrum in $\vec m$ to see if we can achieve more accurate results by this. For example if the gap width $\Delta$ of the BCS spectrum is known one could include this information into the default model $\vec m$. We implement this case by adding a delta peak at the frequency value which maximizes true spectrum on top of the noninformative constant $\vec m$. The results are shown in Fig. \ref{results:fig_6}
+Finally we investigate the impact of the default model $\vec m$ on the performance of the MEM. On the one hand we show the difference for two noninformative, i.e. constant, models which differ only by a constant factor of 10. On the other hand we introduce information about the true spectrum in $\vec m$ to see if we can achieve more accurate results by this. For example if the gap width $\Delta$ of the BCS spectrum is known one could include this information into the default model $\vec m$. We implement this case by adding a delta peak at the frequency value which maximizes true spectrum on top of the noninformative constant $\vec m$. We show the used default models $\vec m$ in Fig. 6 and the results obtained by using them in Fig. \ref{results:fig_7}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.95\textwidth]{./images/BCS_different_default_models.pdf}
+	\caption{Illustration of the different default models $\vec m$ used.}
+	\label{results:fig_6}
+\end{figure}
+\FloatBarrier
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.95\textwidth]{./images/BCS_delta_peak_example.pdf}
 	\caption{Illustration of the effect of $\vec m$ on the performance of the MEM.}
-	\label{results:fig_6}
+	\label{results:fig_7}
 \end{figure}
 \FloatBarrier
 Surprisingly multiplying $\vec m$ by 10 has no impact on the resulting spectrum (upper plot). This allows us to argue that as long as no information about the true spectrum is known choosing a normalized constant default model is sufficient.
 Introducing information in form of a delta peak at the gap width results in a sharp peak at the correct position of the original spectrum. However, one hast to be careful since such strong information as a delta peak will always appear in the estimated spectrum.
-
-\subsubsection*{Annealing method}
-Another possibility to
-
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=0.95\textwidth]{./images/BCS_annealing_example.pdf}
-	\caption{caption}
-	\label{results:fig_7}
-\end{figure}
-\FloatBarrier
-
-Remark:\newline
-\textit{During our investigation of MEM we encountered a high numerical instability of the method. Especially for low values of $\Sigma$ the algorithm resulted in either very inaccurate results or ``crashed'' due to numerical overflow in $\vec A$. This behavior is highly counter intuitive at first because for ``improving'' data the algorithm becomes unstable. As mentioned we firstly encountered a lot of numerical overflows in $\vec A$ when we used the criterion $\vec{\delta u}^T T \vec{\delta u} \leq \sum m_i$ proposed by Bryan and later Jarrell. We managed to get rid of the overflows by changing the norm used to truncate the maximum step length by using the criterion $\parallel \vec A \parallel^2 \leq \sum_i m_i$. However, this only partially solved the problem, as now the algorithm does not converge to a acceptable solution in a great number of times. At the times when Bryan proposed this algorithm and Jarrell adapted it for analytic continuation of Quantum Monte Carlo data, the accessible accuracies for the data were supposedly much lower than they are nowadays. We simply expect this to be the reason that neither Bryan of Jarell address this issue. Another interesting property worth mentioning is that the stability of the algorithm is dependent on $\alpha$. In some cases it is possible even for relatively small error bars to stabilize the algorithm by choosing a large alpha. But this gives rise to the problem that we cannot estimate the spectrum $A(\omega$ over a large range of $\alpha$ independent of the noise present in the data. In this case we can only propose solutions for single values or over small ranges of $\alpha$.}
