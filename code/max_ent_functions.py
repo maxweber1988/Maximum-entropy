@@ -4,7 +4,6 @@ from scipy.linalg import lu_solve,lu_factor, eigh
 from scipy.sparse.linalg import eigsh
 import matplotlib.pyplot as plt
 import time
-import mpmath as mpm
 
 def calc_A(dw, Nw, mu, sigma,ampl):
 	"""
@@ -206,7 +205,7 @@ def root_finding_diag(u, m, alpha, V, Sigma, U, G, Cov, dw,max_iter1 = 1000, max
 		f_appr = m * np.exp(np.dot(U,u+delta_u))
 		count2 = 1
 		Jac = np.dot(M,K) + np.eye(s) * alpha
-		h = np.abs(np.dot(F_u.T,F_u))/np.abs(np.dot(F_u.T,np.dot(Jac,F_u))) * 100
+		h = np.abs(np.dot(F_u.T,F_u))/np.abs(np.dot(F_u.T,np.dot(Jac,F_u))) * 10
 		mu = 1./h
 		while np.linalg.norm(f_appr-f_old) > max_val and count2 < max_iter2:
 			B = (alpha + count2 * mu)*np.diag(np.ones((s))) + Lambda
