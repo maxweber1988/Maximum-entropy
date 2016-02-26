@@ -1,4 +1,12 @@
-In this section we investigate the performance of the MEM by applying it to synthetic Greens function in order to recover the spectrum $A(\omega)$. We generate the Greens function data by first calculating the spectrum $A(\omega)$ and then using Equ. \ref{eq:kernel_as_reiman_sum} to calculate the Greens function given our spectrum and the kernel $K(\tau,\omega)$. After that we corrupt the Greens function by relative Gaussian noise as the ``real'' Greens function obtained by Quantum Monte Carlo methods always suffers from noise. This distribution of noise ensures the properties get the assumed shape of L. In this evaluation we solely use the spectrum of the BCS superconductor for our investigation which can be calculated as
+In this section we investigate the performance of the MEM by applying it to synthetic Greens function in order to recover the spectrum $A(\omega)$.
+We generate the Greens function data by first calculating the spectrum $A(\omega)$ and then using Equ. \ref{eq:kernel_as_reiman_sum} to calculate the Greens function given our spectrum and the kernel $K(\tau,\omega)$.
+After that we corrupt the Greens function by relative Gaussian noise as the ``real'' Greens function obtained by Quantum Monte Carlo methods always suffers from noise
+\begin{equation}
+	G_{noisy}(\tau) = G_{original}(\tau) + \mathcal{N}(0,\sigma*G(\tau))
+\end{equation}
+Here $\sigma$ determines the strength of the relative noise.
+This Gaussian distribution of the noise ensures that the assumptions made by the Bayesian approach described in the theory section are fulfilled.
+In this evaluation we solely use the spectrum of the BCS superconductor for our investigation which can be calculated as
 \begin{equation}
 	A(\omega) = 
 		\begin{cases}

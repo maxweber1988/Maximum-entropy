@@ -136,7 +136,7 @@ As the method of steepest descent is a first order approximation algorithm we ne
 \subsubsection*{MEM for weak noise}
 During our investigation of MEM we encountered a high numerical instability of the method especially for low values of the relative standard deviation of the Gaussian noise distribution $\sigma$.
 The algorithm  ``crashed'' due to numerical overflow in $\vec A$ although we applied our improved criterion for the maximum step length $\parallel \vec{\delta A} \parallel^2 \leq \sum_i m_i$.
-We at least partly suspect the reason for that to be the matrix $\mathbf{W} = \mathbf{diag}((\sigma G(\tau))^{-2})$ which has already elements of the order of $10^{14}$ for $\sigma = 10^{-4}$.
+We at least partly suspect the reason for that to be the matrix $\mathbf{W} = \mathbf{diag}((\sigma \vec G(\tau))^{-2})$ which has already elements of the order of $10^{14}$ for $\sigma = 10^{-4}$.
 This behavior is highly counter intuitive at first because for ``improving'' data numerical instabilities arise.
 At the times when Bryan proposed this algorithm and Jarrell adapted it for analytic continuation of Quantum Monte Carlo data, the accessible accuracies for the data were supposedly much lower than they are nowadays. We simply expect this to be the reason that neither Bryan of Jarell address this issue and restrict ourselves to a maximum accuracy of $\sigma = 10^{-4}$.
 \subsubsection*{Impact of $\alpha$}

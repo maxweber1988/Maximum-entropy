@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1456520284 "report.tex" "report.pdf" "report" 1456520284
+["pdflatex"] 1456521874 "report.tex" "report.pdf" "report" 1456521874
   "./images/BCS_A_G_example.pdf" 1456510990 14358 b4991f563ebf85663175982d573c93c8 ""
   "./images/BCS_Bryan_classic_p_alpha.pdf" 1456510904 24183 dcf7619c496d767e8ae8166b6fa6c78c ""
   "./images/BCS_delta_peak_example.pdf" 1456513573 30347 0ab04547a54ec4f5dd1bf84d37c32420 ""
@@ -128,12 +128,12 @@
   "images/BCS_varying_alpha.pdf" 1456309451 20855 b4a4325a025bfaa7705dc2fffb390f0e ""
   "images/BCS_varying_cutoffs.pdf" 1456405528 25253 143c3d27310c7ac35653a2eb2dff7104 ""
   "images/BCS_varying_noise.pdf" 1456510175 21004 c68ad89b5f1fd5fe35954cc438eddacd ""
-  "numerics.tex" 1456519892 12994 d4450b54f774f048f949b2f9078f1f1c ""
-  "report.aux" 1456520284 4555 b1cce9cb8be22c2033de24f7a3dd87a9 ""
+  "numerics.tex" 1456521869 12999 4270b2fab5026b7cf34860c2db975bd9 ""
+  "report.aux" 1456521874 4555 0b754c4662399b13b7ff31bcc260a884 ""
   "report.tex" 1456481424 1254 1c9b04ccad20d751b811a5bfc048d59b ""
-  "results.tex" 1456520279 8696 fdfb2a738d3ee5d0bfb84c34c8fe6b5f ""
+  "results.tex" 1456521819 8926 e0327e20db4910a0112d79cf3f3293a4 ""
   "theory.tex" 1456307146 14050 f4033040ab2e4cb60fc77a5d32b97149 ""
   (generated)
-  "report.log"
   "report.pdf"
+  "report.log"
   "report.aux"

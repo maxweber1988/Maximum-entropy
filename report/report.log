@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.9)  26 FEB 2016 21:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.9)  26 FEB 2016 22:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -488,28 +488,28 @@ ose $[]$ which max-i-mizes (13[]). Set-ing $\OML/lmm/m/it/10 @[]p\OT1/lmr/m/n/1
 File: ./images/BCS_A_G_example.pdf Graphic file (type pdf)
 
 <use ./images/BCS_A_G_example.pdf>
-Package pdftex.def Info: ./images/BCS_A_G_example.pdf used on input line 14.
+Package pdftex.def Info: ./images/BCS_A_G_example.pdf used on input line 22.
 (pdftex.def)             Requested size: 327.74895pt x 245.80959pt.
  [10] [11 <./images/BCS_A_G_example.pdf>]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 19.
+(Font)              <12> on input line 27.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 19.
+(Font)              <8> on input line 27.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 19.
+(Font)              <6> on input line 27.
 
 <./images/BCS_varying_alpha.pdf, id=82, 578.16pt x 433.62pt>
 File: ./images/BCS_varying_alpha.pdf Graphic file (type pdf)
 
 <use ./images/BCS_varying_alpha.pdf>
-Package pdftex.def Info: ./images/BCS_varying_alpha.pdf used on input line 24.
+Package pdftex.def Info: ./images/BCS_varying_alpha.pdf used on input line 32.
 (pdftex.def)             Requested size: 327.74895pt x 245.80959pt.
 
 <./images/BCS_varying_cutoffs.pdf, id=83, 578.16pt x 433.62pt>
 File: ./images/BCS_varying_cutoffs.pdf Graphic file (type pdf)
 
 <use ./images/BCS_varying_cutoffs.pdf>
-Package pdftex.def Info: ./images/BCS_varying_cutoffs.pdf used on input line 35
+Package pdftex.def Info: ./images/BCS_varying_cutoffs.pdf used on input line 43
 .
 (pdftex.def)             Requested size: 327.74895pt x 245.80959pt.
  [12 <./images/BCS_varying_alpha.pdf>]
@@ -518,7 +518,7 @@ File: ./images/BCS_Bryan_classic_p_alpha.pdf Graphic file (type pdf)
 
 <use ./images/BCS_Bryan_classic_p_alpha.pdf>
 Package pdftex.def Info: ./images/BCS_Bryan_classic_p_alpha.pdf used on input l
-ine 47.
+ine 55.
 (pdftex.def)             Requested size: 327.74895pt x 245.80959pt.
  [13 <./images/BCS_varying_cutoffs.pdf>] [14 <./images/BCS_Bryan_classic_p_alph
 a.pdf>]
@@ -526,7 +526,7 @@ a.pdf>]
 File: ./images/BCS_varying_noise.pdf Graphic file (type pdf)
 
 <use ./images/BCS_varying_noise.pdf>
-Package pdftex.def Info: ./images/BCS_varying_noise.pdf used on input line 58.
+Package pdftex.def Info: ./images/BCS_varying_noise.pdf used on input line 66.
 (pdftex.def)             Requested size: 327.74895pt x 245.80959pt.
 
 <./images/BCS_different_default_models.pdf, id=223, 578.16pt x 433.62pt>
@@ -534,7 +534,7 @@ File: ./images/BCS_different_default_models.pdf Graphic file (type pdf)
 
 <use ./images/BCS_different_default_models.pdf>
 Package pdftex.def Info: ./images/BCS_different_default_models.pdf used on inpu
-t line 69.
+t line 77.
 (pdftex.def)             Requested size: 327.74895pt x 245.80959pt.
  [15 <./images/BCS_varying_noise.pdf>] <./images/BCS_delta_peak_example.pdf, id
 =272, 578.16pt x 433.62pt>
@@ -542,7 +542,7 @@ File: ./images/BCS_delta_peak_example.pdf Graphic file (type pdf)
 
 <use ./images/BCS_delta_peak_example.pdf>
 Package pdftex.def Info: ./images/BCS_delta_peak_example.pdf used on input line
- 76.
+ 84.
 (pdftex.def)             Requested size: 327.74895pt x 245.80959pt.
  [16 <./images/BCS_different_default_models.pdf>]) [17 <./images/BCS_delta_peak
 _example.pdf>] (./report.aux) ) 
@@ -571,7 +571,7 @@ ype1/public/lm/lmr7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/
 lm/lmri10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy10.
 pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></usr/l
 ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on report.pdf (17 pages, 350465 bytes).
+Output written on report.pdf (17 pages, 351569 bytes).
 PDF statistics:
  434 PDF objects out of 1000 (max. 8388607)
  200 compressed objects within 2 object streams

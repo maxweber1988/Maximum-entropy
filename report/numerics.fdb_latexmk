@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1456514742 "numerics.tex" "numerics.pdf" "numerics" 1456514742
+["pdflatex"] 1456521870 "numerics.tex" "numerics.pdf" "numerics" 1456521870
   "/usr/local/texlive/2015/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/usr/local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmbx5.tfm" 1136768653 1332 f817c21a1ba54560425663374f1b651a ""
@@ -9,7 +9,7 @@
   "/usr/local/texlive/2015/texmf-var/web2c/pdftex/pdflatex.fmt" 1444370464 3849859 3a1fde8bc2b37c946b65c457832aebc8 ""
   "/usr/local/texlive/2015/texmf.cnf" 1432479636 577 0d611272082f3cdb8e80e09a3c69cf07 ""
   "numerics.aux" 1456061535 8 a94a2480d3289e625eea47cd1b285758 ""
-  "numerics.tex" 1456514742 10983 30fdc20acc68857972275c9763786a62 ""
+  "numerics.tex" 1456521869 12999 4270b2fab5026b7cf34860c2db975bd9 ""
   (generated)
   "numerics.pdf"
   "numerics.log"
