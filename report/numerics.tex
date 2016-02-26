@@ -63,7 +63,7 @@ Bryan proposes
 as a maximum step length for the algorithm.\newline
 Remark:\newline
 \textit{However, we found that sometimes even if this criterion is fulfilled the algorithm can be instable due to numerical overflow. The reason for this we assume to be the invalid linear approximation of $\vec {\delta A} = \mathbf{U}^T \vec A\vec{\delta u}$, i.e. $\vec{\delta A} << \vec A(\vec u + \vec{\delta u}) - \vec A(\vec u)$. 
-Therefor, we use the criterion $\parallel \vec A \parallel^2 \leq \sum_i m_i$. In addition we need to choose a reasonable value for the Lewenberg-Marquardt parameter $\mu$. For large values of $\mu$ the Newton search becomes the method of steepest descent. For $\mu >> \alpha: (\mu \mathbf{I} + \mathbf{J})\vec{\delta u} = \nabla Q \rightarrow \mu \mathbf{I} \vec{\delta u} = \nabla Q$. The method for steepest descent reads as $\vec{\delta u} = h \nabla Q$. Therefor we can identify $\mu$ as $h^{-1}$. As the method of steepest descent is a first order approximation algorithm we need to choose $h$ in a way that this approximation stays valid. We therefor demand that the relative error $r$ calculated as the quotient of $r = (h\nabla Q^T \mathbf{J}\nabla Q)^{-1}\nabla Q^T\nabla Q = 0.01$.}\newline
+Therefor, we use the criterion $\parallel \vec A \parallel^2 \leq \sum_i m_i$. In addition we need to choose a reasonable value for the Lewenberg-Marquardt parameter $\mu$. For large values of $\mu$ the Newton search becomes the method of steepest descent. For $\mu >> \alpha: (\mu \mathbf{I} + \mathbf{J})\vec{\delta u} = \nabla Q \rightarrow \mu \mathbf{I} \vec{\delta u} = \nabla Q$. The method for steepest descent reads as $\vec{\delta u} = h \nabla Q$. Therefor we can identify $\mu$ as $h^{-1}$. As the method of steepest descent is a first order approximation algorithm we need to choose $h$ in a way that this approximation stays valid. We therefor demand that the relative error $r$ calculated as the quotient of the second and first order term in a Taylor expansion of $Q$ $r = (h\nabla Q^T \mathbf{J}\nabla Q)^{-1}\nabla Q^T\nabla Q = 0.01$.}\newline
 Now the Newton search can be made more efficient by diagonalizing Equ. \ref{numerical_algorithm:equ.10}. First we diagonalize $\mathbf{T}$:
 \begin{equation}
 	\begin{gathered}
@@ -90,7 +90,9 @@ Please note that $\mathbf{P}$ and $\mathbf{R}$ are orthogonal matrices and $\gam
 	\mathbf{Y} = \mathbf{P} \mathbf{diag}\{ \gamma_i^{-\frac{1}{2}}\} \mathbf{R}
 	\label{numerical_algorithm:equ.14}
 \end{equation}
-With $\mathbf{Y}^{-T}\mathbf{Y}^{-1} = \mathbf{T}$ and $\mathbf{Y}^{-1}\mathbf{M}\mathbf{Y}^{-T} = \mathbf{\Lambda}$ Equ. \ref{numerical_algorithm:equ.10} can be rewritten as
+With $\mathbf{Y}^{-T}\mathbf{Y}^{-1} = \mathbf{T}$ and $\mathbf{Y}^{-1}\mathbf{M}\mathbf{Y}^{-T} = \mathbf{\Lambda}$ Equ. 
+\ref{numerical_algorithm:equ.10}
+can be rewritten as
 \begin{equation}
 	[( \alpha + \mu) \mathbf{I} +\mathbf{\Lambda}]\mathbf{Y}^{-1} \vec{\delta u} = \mathbf{Y}^{-1}[ -\alpha \vec u - \vec g]
 	\label{numerical_algorithm:equ.15}
@@ -101,4 +103,4 @@ Now Equ. \ref{numerical_algorithm:equ.10} can be rewritten to
 	(\alpha + \mu)\vec{\delta u} = -\alpha \vec u - g - \mathbf{M}\mathbf{Y}^{-T}\mathbf{Y}^{-1} \vec{\delta u}
 	\label{numerical_algorithm:equ.16}
 \end{equation}
-So to finally we first solve Equ. \ref{numerical_algorithm:equ.15} for $\mathbf{Y}^{-1} \vec{\delta u}$, use it in Equ. \ref{numerical_algorithm:equ.16} to solve for $\vec{\delta u}$ and calculate the new value for $\vec u_{n+1} = \vec u_{n} + \vec{\delta u}$. The iteration is terminated if $\sum_i |\vec u_{n+1} - \vec u_{n}| \leq 10^{-10}$. We should notice that in practice Equ. \ref{numerical_algorithm:equ.14} can be ill defined due to very small $\gamma_i$ values. However, only $\mathbf{Y}^{-1}$ is needed in all the calculations and it is straight forward to find the expression $\mathbf{Y}^{-1} = \mathbf{R}^T \mathbf{diag} \{ \gamma_i^{\frac{1}{2}}\}\mathbf{P}^T$ because of the orthogonality of $\mathbf{P}$ and $\mathbf{R}$.
+So to finally we first solve Equ. \ref{numerical_algorithm:equ.15} for $\mathbf{Y}^{-1} \vec{\delta u}$, use it in Equ. \ref{numerical_algorithm:equ.16} to solve for $\vec{\delta u}$ and calculate the new value for $\vec u_{n+1} = \vec u_{n} + \vec{\delta u}$. The iteration is terminated if $\sum_i |\vec u_{n+1} - \vec u_{n}| \leq 10^{-10}$. There exists however no deeper motivation for this criterion. We should notice that in practice Equ. \ref{numerical_algorithm:equ.14} can be ill defined due to very small $\gamma_i$ values. But only $\mathbf{Y}^{-1}$ is needed in all the calculations and it is straight forward to find the expression $\mathbf{Y}^{-1} = \mathbf{R}^T \mathbf{diag} \{ \gamma_i^{\frac{1}{2}}\}\mathbf{P}^T$ because of the orthogonality of $\mathbf{P}$ and $\mathbf{R}$.

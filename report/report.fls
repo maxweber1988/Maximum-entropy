@@ -137,9 +137,9 @@ INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/lm/ec-lmr7.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/lm/ec-lmbx7.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/lm/ec-lmr5.tfm
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/lm/ec-lmbx5.tfm
+INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/lm/ec-lmri10.tfm
 OUTPUT report.pdf
 INPUT /usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map
-INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/lm/ec-lmri10.tfm
 INPUT numerics.tex
 INPUT numerics.tex
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/tfm/public/lm/rm-lmbx10.tfm
@@ -159,6 +159,15 @@ INPUT ./images/BCS_varying_cutoffs.pdf
 INPUT ./images/BCS_Bryan_classic_p_alpha.pdf
 INPUT ./images/BCS_Bryan_classic_p_alpha.pdf
 INPUT ./images/BCS_Bryan_classic_p_alpha.pdf
+INPUT ./images/BCS_varying_noise.pdf
+INPUT ./images/BCS_varying_noise.pdf
+INPUT ./images/BCS_varying_noise.pdf
+INPUT ./images/BCS_delta_peak_example.pdf
+INPUT ./images/BCS_delta_peak_example.pdf
+INPUT ./images/BCS_delta_peak_example.pdf
+INPUT ./images/BCS_annealing_example.pdf
+INPUT ./images/BCS_annealing_example.pdf
+INPUT ./images/BCS_annealing_example.pdf
 INPUT report.aux
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc
 INPUT /usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc

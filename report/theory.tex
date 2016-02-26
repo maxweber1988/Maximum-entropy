@@ -87,8 +87,9 @@ The idea is now to find a way to extract $A(\omega)$ form the noisy data set $\v
 First of all we note that for the MEM formalism a valid model wich predicts $G_n$ for a given M dimensional parameter vector
 $\vec{A}$ is necessary. This can be achieved if expression~(\ref{eq:connection_real_frequency_imag_time}) is approximated
 as Rieman sum 
-\begin{equation}\label{eq:kernel_as_reiman_sum}
+\begin{equation}
  G_n = G(\tau_n) = \int_{a}^{b} d \omega A(\omega)K(\tau_n,\omega) \approx \sum_{m=1}^M  A_m K(\tau_n,\omega_m)
+\label{eq:kernel_as_reiman_sum}
 \end{equation}
 \noindent where $A_m = \Delta \omega A(\omega_m)$, $ \omega_m = \Delta \omega m$ and $\Delta \omega = (b-a)/M$ (a,b have to be choosen in a sensible way).
 After this discretizaton we have a parameter vector $\vec{A} =(A_1,...,A_M)^T$ and a true linear model $\vec{G} = \textbf{K} 

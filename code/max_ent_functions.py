@@ -76,7 +76,7 @@ def root_finding_newton(u, m, alpha, V, Sigma, U, G, Cov, dw):
 	count1 = 1
 	max_iter = 1000
 
-	while diff > 1e-5 and count1 <= max_iter:
+	while diff > 1e-8 and count1 <= max_iter:
 		print(count1)
 		A_appr = m * np.exp(np.dot(U,u))
 		A_old = A_appr
@@ -167,14 +167,16 @@ def root_finding_diag(u, m, alpha, V, Sigma, U, G, Cov, dw,max_iter1 = 1000, max
 	:return:
 	"""
 	s=len(u)
-	max_val = 10 * np.sum(m)
+
+	max_val = 5 * np.sum(m)
+
 	T_s = np.dot(V,np.dot(Sigma,U.T))
 	diff = 1.
 
 	count1 = 1
 	u_old = u
 	type = np.zeros(max_iter1)
-	while diff > 1e-10 and count1 < max_iter1:
+	while diff > 1e-8 and count1 < max_iter1:
 		f_appr = m * np.exp(np.dot(U,u))
 		f_old = f_appr
 		inv_cov = (1. / np.diagonal(Cov)**2)
@@ -204,9 +206,8 @@ def root_finding_diag(u, m, alpha, V, Sigma, U, G, Cov, dw,max_iter1 = 1000, max
 		f_appr = m * np.exp(np.dot(U,u+delta_u))
 		count2 = 1
 		Jac = np.dot(M,K) + np.eye(s) * alpha
-		h = np.abs(np.dot(F_u.T,F_u))/np.abs(np.dot(F_u.T,np.dot(Jac,F_u)))
+		h = np.abs(np.dot(F_u.T,F_u))/np.abs(np.dot(F_u.T,np.dot(Jac,F_u))) * 100
 		mu = 1./h
-		print(mu,np.linalg.norm(f_appr-f_old))
 		while np.linalg.norm(f_appr-f_old) > max_val and count2 < max_iter2:
 			B = (alpha + count2 * mu)*np.diag(np.ones((s))) + Lambda
 			c_vec = -alpha * np.dot(Y_inv,u)-np.dot(Y_inv,g)
@@ -218,22 +219,21 @@ def root_finding_diag(u, m, alpha, V, Sigma, U, G, Cov, dw,max_iter1 = 1000, max
 			count2 += 1
 		u_old = u
 		u = u + delta_u
-		if np.any(np.isinf(m * np.exp(np.dot(U,u)))):
+		if np.any(np.isinf(np.exp(np.dot(U,u)))):
+			print(u+delta_u)
+			print (np.exp(np.dot(U,u)))
 			u = u_old + np.random.normal(u_old,1,len(u_old))
+			print(u)
 		diff = np.abs(np.sum(u-u_old))
 		count1 += 1
-	print(count1)
 	return u	
 	
 def calc_p_alpha(A,alpha,Cov,G,K,m):
 
 	inv_cov_squ = (1./np.diagonal(Cov))**2
 	# calculate 0.5 * d^2/dA^2 chi
-
-
 	d2_chi = np.dot(K.T,np.dot(np.diag(inv_cov_squ),K))
 	mat = 0.5 * np.dot(np.diag(np.sqrt(A)),np.dot(d2_chi,np.diag(np.sqrt(A))))
-	# print(np.amin(mat))
 	eig,eigv = eigh(mat)
 	# print(eig)
 	S = np.sum(A - m - A * np.log((1e-20 + A) / m))
@@ -242,4 +242,5 @@ def calc_p_alpha(A,alpha,Cov,G,K,m):
 	Q = alpha * S - L
 	#print("e^Q = ",np.exp(Q))
 	p_alpha_val = np.prod(np.sqrt(alpha/(alpha+eig))) * 1./alpha * np.exp(Q)
+	print(p_alpha_val)
 	return p_alpha_val

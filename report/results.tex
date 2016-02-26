@@ -1,4 +1,4 @@
-In this section we investigate the performance of the MEM by applying it to synthetic Greens function in order to recover the spectrum $A(\omega)$. We generate the Greens function data by first calculating the spectrum $A(\omega)$ and then using Equ. to calculate the Greens function given our spectrum and the kernel $K(\tau,\omega)$. After that we corrupt the Greens function by Gaussian noise as the ``real'' Greens function obtained by Quantum Monte Carlo methods always suffer from noise. In this evaluation we solely use the spectrum of the BCS superconductor for our investigation which can be calculated by 
+In this section we investigate the performance of the MEM by applying it to synthetic Greens function in order to recover the spectrum $A(\omega)$. We generate the Greens function data by first calculating the spectrum $A(\omega)$ and then using Equ. \ref{eq:kernel_as_reiman_sum} to calculate the Greens function given our spectrum and the kernel $K(\tau,\omega)$. After that we corrupt the Greens function by Gaussian noise as the ``real'' Greens function obtained by Quantum Monte Carlo methods always suffers from noise. In this evaluation we solely use the spectrum of the BCS superconductor for our investigation which can be calculated as
 \begin{equation}
 	A(\omega) = 
 		\begin{cases}
@@ -7,7 +7,7 @@ In this section we investigate the performance of the MEM by applying it to synt
 		\end{cases}
 	\label{results:equ.1}
 \end{equation}
-where $W$ denotes the bandwidth and $2\Delta$ the gap magnitude.
+where $W$ denotes the bandwidth and $2\Delta$ the gap magnitude. The spectrum of the BCS superconductor is chosen because it contains a flat region, one steep peak and a sharp gap edge. This variety of features makes the spectrum an ideal test case.
 In Fig. we show an example of the spectrum and the resulting Greens function for $W = 0.9$ and $\Delta = 10$.
 \begin{figure}[htbp]
 	\centering
@@ -16,8 +16,10 @@ In Fig. we show an example of the spectrum and the resulting Greens function for
 	\label{results:fig.1}
 \end{figure}
 \FloatBarrier
-During our investigation of MEM we encountered a high numerical instability of the method. Especially for low values of $\Sigma$ the algorithm resulted in either very inaccurate results or ``crashed'' due to numerical overflow in $\vec A$. This behavior is highly counter intuitive and one should put a great thought on the data before using this formalism. As mentioned we firstly encountered a lot of numerical overflows in $\vec A$ when we used the criterion $\vec{\delta u}^T T \vec{\delta u} \leq \sum m_i$proposed by Bryan. We managed to get rid of the overflows by changing the norm used to truncate the maximum step length by using the criterion $\parallel \vec A \parallel^2 \leq \sum_i m_i$. However, this only partially solved the problem, as now the algorithm does not converge to a acceptable solution in a great number of times. At the times when Bryan proposed this algorithm and Jarrell adapted it for analytic continuation of Quantum Monte Carlo data, the accessible accuracies for the data where much lower than they are nowadays. We simply expect this to be the reason that neither Bryan of Jarrell address this issue. Therefor, we restrict ourselves to a minimum error of $10^{-4}$ for the whole investigation. \newline
-The results obtained by MEM highly depend on the regularization parameter $\alpha$. We demonstrate the influence of $\alpha$ by estimating the spectrum shown in Fig. \ref{results:fig.1} for three different values for $\alpha = 0.5,2.5,10$. The results are shown in Fig. \ref{results:fig.2}
+Remark:\newline
+\textit{During our investigation of MEM we encountered a high numerical instability of the method. Especially for low values of $\Sigma$ the algorithm resulted in either very inaccurate results or ``crashed'' due to numerical overflow in $\vec A$. This behavior is highly counter intuitive at first because for ``improving'' data the algorithm becomes unstable. As mentioned we firstly encountered a lot of numerical overflows in $\vec A$ when we used the criterion $\vec{\delta u}^T T \vec{\delta u} \leq \sum m_i$ proposed by Bryan and later Jarrell. We managed to get rid of the overflows by changing the norm used to truncate the maximum step length by using the criterion $\parallel \vec A \parallel^2 \leq \sum_i m_i$. However, this only partially solved the problem, as now the algorithm does not converge to a acceptable solution in a great number of times. At the times when Bryan proposed this algorithm and Jarrell adapted it for analytic continuation of Quantum Monte Carlo data, the accessible accuracies for the data were supposedly much lower than they are nowadays. We simply expect this to be the reason that neither Bryan of Jarell address this issue. Another interesting property worth mentioning is that the stability of the algorithm is dependent on $\alpha$. In some cases it is possible even for relatively small error bars to stabilize the algorithm by choosing a large alpha. But this gives rise to the problem that we cannot estimate the spectrum $A(\omega$ over a large range of $\alpha$ independent of the noise present in the data. In this case we can only propose solutions for single values or over small ranges of $\alpha$.}\newline
+In the following we investigate the influence of $\alpha$ and the threshold for the singular values denoted by $\theta$.
+We found that the results obtained by MEM highly depend on the regularization parameter $\alpha$. We demonstrate the influence of $\alpha$ by estimating the spectrum shown in Fig. \ref{results:fig.1} for three different values for $\alpha = 0.5,5,50$. The results are shown in Fig. \ref{results:fig.2}
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.95\textwidth]{./images/BCS_varying_alpha.pdf}
@@ -25,19 +27,48 @@ The results obtained by MEM highly depend on the regularization parameter $\alph
 	\label{results:fig.2}
 \end{figure}
 \FloatBarrier
-Another important parameter is the choice of the minimum singular value $\theta$ which determines the dimension of the singular space. We investigate the impact of $\theta$ on the performance of the Maximum Entropy method in Fig. \ref{results:fig.3}
+We observe that for increasing values of $\alpha$ the oscillation like features in the flat region of the spectrum start to vanish and therefor result in a better approximation of the real spectrum in this region. In contrast, the sharp peak at the beginning of the spectrum gets resolved worse for larger values of $\alpha$. This result resembles very nicely the impact of the regularization parameter $\alpha$ on the resulting estimated spectrum. The oscillations due to noise get suppressed at the cost of loosing features like the sharp peak at the beginning of the real spectrum. We further notice that for all three $\alpha$-values the sharp edge at the right end of the spectrum is not resolved very well.\newline
+Another important parameter is the choice of the minimum singular value $\theta$ which determines the dimension of the singular space.
+Next we investigate the impact of $\theta$ on the performance of the Maximum Entropy method in Fig. \ref{results:fig.3}
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.95\textwidth]{./images/BCS_varying_cutoffs.pdf}
-	\caption{Influence of the minimum singular value $\theta$ on the performance of the Maximum Entropy method. The spectrum is calculated according to Equ. \ref{results:equ.1} with $\Delta = 0.9$ and $W = 10$.}
+	\caption{Influence of the minimum singular value $\theta$ on the performance of the Maximum Entropy method. The spectrum is calculated according to Equ. \ref{results:equ.1} with $\Delta = 0.9$ and $W = 10$ and shown in blue in every subplot.}
 	\label{results:fig.3}
 \end{figure}
 \FloatBarrier
-Finally we show the difference between classic MEM and the Bryan method in choosing $\alpha$. As discussed in Sec. !!Reference!! the classic MEM uses the maximum value of the probability of $\alpha$ given $A$ and $G$ while Bryan calculates the final $\hat{A}$ by  $\hat{A} = \int A(\alpha) P_{\alpha} d\alpha$. In Fig. we show the probability $p_{\alpha}$ and the resulting spectra calculated by classic and Bryan's method
+Here we see that choosing a very low value for $\theta = 10^{-2}$ results in a wrong approximation of the true spectrum. Whereas reducing $\theta$ to $10^{-3}$ already results in a great improvement on the estimated spectrum. For smaller values of $\theta = 10^{-5},10^{-10},10^{-15}$ there are practically no differences while we can observe that for all of this values the first peak of the BCS spectrum gets resolved better that for $\theta = 10^{-3}$.\newline 
+Now we show the difference between classic MEM and the Bryan method in choosing $\alpha$. As discussed in Sec. !!Reference!! the classic MEM uses the maximum value of the probability of $\alpha$ given $A$ and $G$ while Bryan calculates the final $\hat{A}$ by  $\hat{A} = \int A(\alpha) P_{\alpha} d\alpha$. In Fig. we show the probability $p_{\alpha}$ and the resulting spectra calculated by classic and Bryan's method
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.95\textwidth]{./images/BCS_Bryan_classic_p_alpha.pdf}
-	\caption{caption}
+	\caption{Upper row: probability distribution of $\alpha$ for steps in $\alpha$ of 0.1 from 0.1 to 20. lower row: resulting spectra using the classic method and Bryan's method}
 	\label{results:fig.4}
+\end{figure}
+\FloatBarrier
+There is practically no visible difference between the classic method and Bryan's method for this data. We suspect this to be at least partly due to the fact, that for $\alpha$ values larger and equal the maximum value of $P_{\alpha}$ the resulting spectra do not change much and only for small values of $\alpha$ we see significant differences in the reulting spectrum. We therefor will perform all following calculations at a constant value of $\alpha = 5$.\newline
+Next we demonstrate the influence of the relative noise in the green's function $G(\tau)$. We estimate the spectra for four different standard deviations of the noise from $10^{-1}$ to $10^{-4}$. The results are shown in Fig. \ref{results:fig_5}
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.95\textwidth]{./images/BCS_varying_noise.pdf}
+	\caption{Resulting spectra $A(\omega)$ for four different noise standard deviations.}
+	\label{results:fig_5}
+\end{figure}
+\FloatBarrier
+We see that both the peak at the beginning of the spectrum and the edge at the end of the spectrum is represented better for $\sigma = 10^{-3}$ and $\sigma = 10^{-4}$. Overall one can say, that for $\sigma = 10^{-1}$ the results seem rather poor and significantly worse than for $\sigma = 10^{-2}$.\newline
+Finally we investigate the impact of the default model $\vec m$ on the performance of the MEM. We first show the difference for two noninformative, i.e. constant, models.
+Secondly we introduce information about the true spectrum in $\vec m$ to see if we can achieve more accurate results by this. For example if one would know the gap width $W$ of the BCS spectrum we use in this section he could use this information in the default model $\vec m$. We implement this by adding a delta peak at the frequency value fo the maximum of the true spectrum to $\vec m$. The results are shown in Fig. \ref{results:fig_6}b
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.95\textwidth]{./images/BCS_delta_peak_example.pdf}
+	\caption{caption}
+	\label{results:fig_6}
+\end{figure}
+\FloatBarrier
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.95\textwidth]{./images/BCS_annealing_example.pdf}
+	\caption{caption}
+	\label{results:fig_7}
 \end{figure}
 \FloatBarrier

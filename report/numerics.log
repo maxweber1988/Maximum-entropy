@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.9)  22 FEB 2016 17:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.9)  24 FEB 2016 10:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2304,7 +2304,10 @@ Missing character: There is no a in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no k in font nullfont!
 Missing character: There is no : in font nullfont!
-Missing character: There is no T in font nullfont!
+Missing character: There is no N in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no t in font nullfont!
 Missing character: There is no h in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no N in font nullfont!
@@ -2981,8 +2984,8 @@ Overfull \hbox (30.93631pt too wide) in paragraph at lines 62--68
  []
 
 
-Overfull \hbox (42.35002pt too wide) in paragraph at lines 62--68
-\OMS/cmsy/m/n/10 ^^@r\OML/cmm/m/it/10 Q\OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 >
+Overfull \hbox (29.01663pt too wide) in paragraph at lines 62--68
+\OMS/cmsy/m/n/10 r\OML/cmm/m/it/10 Q \OMS/cmsy/m/n/10 !
  []
 
 
@@ -2991,8 +2994,8 @@ Overfull \hbox (31.48956pt too wide) in paragraph at lines 62--68
  []
 
 
-Overfull \hbox (27.08336pt too wide) in paragraph at lines 62--68
-\OMS/cmsy/m/n/10 ^^@r\OML/cmm/m/it/10 Q$\OT1/cmr/m/it/10 .
+Overfull \hbox (19.30556pt too wide) in paragraph at lines 62--68
+\OMS/cmsy/m/n/10 r\OML/cmm/m/it/10 Q$\OT1/cmr/m/it/10 .
  []
 
 
@@ -3046,9 +3049,8 @@ Overfull \hbox (21.103pt too wide) in paragraph at lines 62--68
  []
 
 
-Overfull \hbox (32.84494pt too wide) in paragraph at lines 62--68
-\OMS/cmsy/m/n/10 ^^@\OML/cmm/m/it/10 h\OMS/cmsy/m/n/10 r\OML/cmm/m/it/10 Q$\OT1
-/cmr/m/it/10 .
+Overfull \hbox (25.06714pt too wide) in paragraph at lines 62--68
+\OML/cmm/m/it/10 h\OMS/cmsy/m/n/10 r\OML/cmm/m/it/10 Q$\OT1/cmr/m/it/10 .
  []
 
 
@@ -3093,7 +3095,405 @@ Overfull \hbox (9.19995pt too wide) in paragraph at lines 62--68
 
 
 Overfull \hbox (19.56438pt too wide) in paragraph at lines 62--68
-\OML/cmm/m/it/10 h[]$\OT1/cmr/m/it/10 . 
+\OML/cmm/m/it/10 h[]$\OT1/cmr/m/it/10 .
+ []
+
+
+Overfull \hbox (11.52216pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 As
+ []
+
+
+Overfull \hbox (13.03323pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 the
+ []
+
+
+Overfull \hbox (30.92201pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 method
+ []
+
+
+Overfull \hbox (8.17773pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 of
+ []
+
+
+Overfull \hbox (24.78868pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 steep-
+ []
+
+
+Overfull \hbox (12.01102pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 est
+ []
+
+
+Overfull \hbox (13.28879pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 de-
+ []
+
+
+Overfull \hbox (21.72205pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 scent
+ []
+
+
+Overfull \hbox (7.15552pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 is
+ []
+
+
+Overfull \hbox (5.11108pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 a
+ []
+
+
+Overfull \hbox (17.24988pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 first
+ []
+
+
+Overfull \hbox (12.90546pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 or-
+ []
+
+
+Overfull \hbox (13.92767pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 der
+ []
+
+
+Overfull \hbox (13.79991pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 ap-
+ []
+
+
+Overfull \hbox (22.14429pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 prox-
+ []
+
+
+Overfull \hbox (6.6444pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 i-
+ []
+
+
+Overfull \hbox (16.86656pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 ma-
+ []
+
+
+Overfull \hbox (17.12212pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 tion
+ []
+
+
+Overfull \hbox (11.24437pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 al-
+ []
+
+
+Overfull \hbox (13.28879pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 go-
+ []
+
+
+Overfull \hbox (23.89429pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 rithm
+ []
+
+
+Overfull \hbox (11.24437pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 we
+ []
+
+
+Overfull \hbox (18.91095pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 need
+ []
+
+
+Overfull \hbox (8.43327pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 to
+ []
+
+
+Overfull \hbox (28.11092pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 choose
+ []
+
+
+Overfull \hbox (5.76158pt too wide) in paragraph at lines 62--68
+\OML/cmm/m/it/10 h$
+ []
+
+
+Overfull \hbox (8.68884pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 in
+ []
+
+
+Overfull \hbox (5.11108pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 a
+ []
+
+
+Overfull \hbox (16.61101pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 way
+ []
+
+
+Overfull \hbox (16.86655pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 that
+ []
+
+
+Overfull \hbox (15.58879pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 this
+ []
+
+
+Overfull \hbox (13.79991pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 ap-
+ []
+
+
+Overfull \hbox (22.14429pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 prox-
+ []
+
+
+Overfull \hbox (6.6444pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 i-
+ []
+
+
+Overfull \hbox (16.86656pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 ma-
+ []
+
+
+Overfull \hbox (17.12212pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 tion
+ []
+
+
+Overfull \hbox (21.46652pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 stays
+ []
+
+
+Overfull \hbox (23.51097pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 valid.
+ []
+
+
+Overfull \hbox (14.58879pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 We
+ []
+
+
+Overfull \hbox (24.91644pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 there-
+ []
+
+
+Overfull \hbox (12.39436pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 for
+ []
+
+
+Overfull \hbox (13.28879pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 de-
+ []
+
+
+Overfull \hbox (24.0221pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 mand
+ []
+
+
+Overfull \hbox (16.86655pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 that
+ []
+
+
+Overfull \hbox (13.03323pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 the
+ []
+
+
+Overfull \hbox (14.43875pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 rel-
+ []
+
+
+Overfull \hbox (8.68883pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 a-
+ []
+
+
+Overfull \hbox (15.58876pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 tive
+ []
+
+
+Overfull \hbox (12.39433pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 er-
+ []
+
+
+Overfull \hbox (13.03322pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 ror
+ []
+
+
+Overfull \hbox (4.78937pt too wide) in paragraph at lines 62--68
+\OML/cmm/m/it/10 r$
+ []
+
+
+Overfull \hbox (15.3332pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 cal-
+ []
+
+
+Overfull \hbox (13.54434pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 cu-
+ []
+
+
+Overfull \hbox (20.18874pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 lated
+ []
+
+
+Overfull \hbox (9.19995pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 as
+ []
+
+
+Overfull \hbox (13.03323pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 the
+ []
+
+
+Overfull \hbox (18.65543pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 quo-
+ []
+
+
+Overfull \hbox (19.93318pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 tient
+ []
+
+
+Overfull \hbox (8.17773pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 of
+ []
+
+
+Overfull \hbox (13.03323pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 the
+ []
+
+
+Overfull \hbox (16.35541pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 sec-
+ []
+
+
+Overfull \hbox (15.84436pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 ond
+ []
+
+
+Overfull \hbox (15.84436pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 and
+ []
+
+
+Overfull \hbox (17.24988pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 first
+ []
+
+
+Overfull \hbox (12.90546pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 or-
+ []
+
+
+Overfull \hbox (13.92767pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 der
+ []
+
+
+Overfull \hbox (20.31651pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 term
+ []
+
+
+Overfull \hbox (8.68884pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 in
+ []
+
+
+Overfull \hbox (5.11108pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 a
+ []
+
+
+Overfull \hbox (19.93318pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 Tay-
+ []
+
+
+Overfull \hbox (11.88326pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 lor
+ []
+
+
+Overfull \hbox (12.81657pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 ex-
+ []
+
+
+Overfull \hbox (18.91098pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 pan-
+ []
+
+
+Overfull \hbox (17.8888pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 sion
+ []
+
+
+Overfull \hbox (8.17773pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/it/10 of
+ []
+
+
+Overfull \hbox (7.90555pt too wide) in paragraph at lines 62--68
+\OML/cmm/m/it/10 Q$
+ []
+
+
+Overfull \hbox (15.34488pt too wide) in paragraph at lines 62--68
+\OML/cmm/m/it/10 r \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (118.33038pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 h\OMS/cmsy/m/n/10 r\OML/cmm/m/it/10 Q[]\OT1/c
+mr/bx/n/10 J\OMS/cmsy/m/n/10 r\OML/cmm/m/it/10 Q\OT1/cmr/m/n/10 )[]\OMS/cmsy/m/
+n/10 r\OML/cmm/m/it/10 Q[]\OMS/cmsy/m/n/10 r\OML/cmm/m/it/10 Q \OT1/cmr/m/n/10 
+=
+ []
+
+
+Overfull \hbox (20.84448pt too wide) in paragraph at lines 62--68
+\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 01$\OT1/cmr/m/it/10 . 
  []
 
 
@@ -3814,6 +4214,59 @@ Missing character: There is no d in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no f in font nullfont!
 Missing character: There is no . in font nullfont!
+Missing character: There is no T in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no x in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no v in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no v in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no f in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no . in font nullfont!
 Missing character: There is no W in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no s in font nullfont!
@@ -3897,14 +4350,9 @@ Missing character: There is no u in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no . in font nullfont!
-Missing character: There is no H in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no w in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no v in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no , in font nullfont!
+Missing character: There is no B in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no t in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no n in font nullfont!
 Missing character: There is no l in font nullfont!
@@ -4019,9 +4467,9 @@ Missing character: There is no . in font nullfont!
 Here is how much of TeX's memory you used:
  35 strings out of 493089
  644 string characters out of 6134842
- 64199 words of memory out of 5000000
+ 66199 words of memory out of 5000000
  3614 multiletter control sequences out of 15000+600000
  4913 words of font info for 18 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 19i,5n,19p,781b,125s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 19i,5n,19p,893b,125s stack positions out of 5000i,500n,10000p,200000b,80000s
 !  ==> Fatal error occurred, no output PDF file produced!

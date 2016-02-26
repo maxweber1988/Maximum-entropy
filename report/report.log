@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.9)  22 FEB 2016 17:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.9)  26 FEB 2016 11:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -471,12 +471,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 24--27
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 [2] [3]
-Underfull \hbox (badness 10000) in paragraph at lines 125--128
+Underfull \hbox (badness 10000) in paragraph at lines 126--129
 
  []
 
 [4]
-Overfull \hbox (14.42311pt too wide) in paragraph at lines 198--205
+Overfull \hbox (14.42311pt too wide) in paragraph at lines 199--206
 \T1/lmr/m/n/10 The \T1/lmr/m/it/10 Clas-sic method \T1/lmr/m/n/10 is now to cho
 ose $[]$ which max-i-mizes (13[]). Set-ing $\OML/lmm/m/it/10 @[]p\OT1/lmr/m/n/1
 0 (\OML/lmm/m/it/10 \OMS/lmsy/m/n/10 j[]\OML/lmm/m/it/10 ; []\OT1/lmr/m/n/10 )
@@ -490,60 +490,88 @@ File: ./images/BCS_A_G_example.pdf Graphic file (type pdf)
 <use ./images/BCS_A_G_example.pdf>
 Package pdftex.def Info: ./images/BCS_A_G_example.pdf used on input line 14.
 (pdftex.def)             Requested size: 327.74895pt x 245.80959pt.
- [8] [9 <./images/BCS_A_G_example.pdf>]
-<./images/BCS_varying_alpha.pdf, id=76, 578.16pt x 433.62pt>
+ [8]
+<./images/BCS_varying_alpha.pdf, id=44, 578.16pt x 433.62pt>
 File: ./images/BCS_varying_alpha.pdf Graphic file (type pdf)
 
 <use ./images/BCS_varying_alpha.pdf>
-Package pdftex.def Info: ./images/BCS_varying_alpha.pdf used on input line 23.
+Package pdftex.def Info: ./images/BCS_varying_alpha.pdf used on input line 25.
 (pdftex.def)             Requested size: 327.74895pt x 245.80959pt.
-
-<./images/BCS_varying_cutoffs.pdf, id=77, 578.16pt x 433.62pt>
+ [9 <./images/BCS_A_G_example.pdf>]
+<./images/BCS_varying_cutoffs.pdf, id=50, 578.16pt x 433.62pt>
 File: ./images/BCS_varying_cutoffs.pdf Graphic file (type pdf)
 
 <use ./images/BCS_varying_cutoffs.pdf>
-Package pdftex.def Info: ./images/BCS_varying_cutoffs.pdf used on input line 31
+Package pdftex.def Info: ./images/BCS_varying_cutoffs.pdf used on input line 35
 .
 (pdftex.def)             Requested size: 327.74895pt x 245.80959pt.
  [10 <./images/BCS_varying_alpha.pdf>]
-<./images/BCS_Bryan_classic_p_alpha.pdf, id=118, 578.16pt x 433.62pt>
+<./images/BCS_Bryan_classic_p_alpha.pdf, id=89, 578.16pt x 433.62pt>
 File: ./images/BCS_Bryan_classic_p_alpha.pdf Graphic file (type pdf)
 
 <use ./images/BCS_Bryan_classic_p_alpha.pdf>
 Package pdftex.def Info: ./images/BCS_Bryan_classic_p_alpha.pdf used on input l
-ine 39.
+ine 44.
 (pdftex.def)             Requested size: 327.74895pt x 245.80959pt.
- [11 <./images/BCS_varying_cutoffs.pdf>]) [12 <./images/BCS_Bryan_classic_p_alp
-ha.pdf>] (./report.aux) ) 
+ [11 <./images/BCS_varying_cutoffs.pdf>] [12 <./images/BCS_Bryan_classic_p_alph
+a.pdf>]
+<./images/BCS_varying_noise.pdf, id=188, 578.16pt x 433.62pt>
+File: ./images/BCS_varying_noise.pdf Graphic file (type pdf)
+
+<use ./images/BCS_varying_noise.pdf>
+Package pdftex.def Info: ./images/BCS_varying_noise.pdf used on input line 53.
+(pdftex.def)             Requested size: 327.74895pt x 245.80959pt.
+
+<./images/BCS_delta_peak_example.pdf, id=189, 578.16pt x 433.62pt>
+File: ./images/BCS_delta_peak_example.pdf Graphic file (type pdf)
+
+<use ./images/BCS_delta_peak_example.pdf>
+Package pdftex.def Info: ./images/BCS_delta_peak_example.pdf used on input line
+ 63.
+(pdftex.def)             Requested size: 327.74895pt x 245.80959pt.
+ [13 <./images/BCS_varying_noise.pdf>] <./images/BCS_annealing_example.pdf, id=
+238, 578.16pt x 433.62pt>
+File: ./images/BCS_annealing_example.pdf Graphic file (type pdf)
+
+<use ./images/BCS_annealing_example.pdf>
+Package pdftex.def Info: ./images/BCS_annealing_example.pdf used on input line 
+70.
+(pdftex.def)             Requested size: 327.74895pt x 245.80959pt.
+ [14 <./images/BCS_delta_peak_example.pdf> <./images/BCS_annealing_example.pdf
+
+pdfTeX warning: pdflatex (file ./images/BCS_annealing_example.pdf): PDF inclusi
+on: multiple pdfs with page group included in a single page
+>]) [15
+
+] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 9106 strings out of 493089
- 170498 string characters out of 6134842
- 210443 words of memory out of 5000000
- 12476 multiletter control sequences out of 15000+600000
+ 9123 strings out of 493089
+ 171050 string characters out of 6134842
+ 210462 words of memory out of 5000000
+ 12490 multiletter control sequences out of 15000+600000
  59673 words of font info for 45 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,17n,37p,10374b,247s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/lm
-/lm-rm.enc}{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc
-}{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/loc
-al/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/201
-5/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}</usr/local/texlive/2015/texmf-di
-st/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
-ype1/public/lm/lmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publi
-c/lm/lmex10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmmi1
-0.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmmi5.pfb></usr
-/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></usr/local/texl
-ive/2015/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2015/te
-xmf-dist/fonts/type1/public/lm/lmr5.pfb></usr/local/texlive/2015/texmf-dist/fon
-ts/type1/public/lm/lmr7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
-lic/lm/lmri10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lms
-y10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></u
-sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb
->
-Output written on report.pdf (12 pages, 281620 bytes).
+{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-rm.
+enc}{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/
+local/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texl
+ive/2015/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2015/texmf
+-dist/fonts/enc/dvips/lm/lm-mathex.enc}</usr/local/texlive/2015/texmf-dist/font
+s/type1/public/lm/lmbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pu
+blic/lm/lmbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lm
+ex10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmmi5.pfb></usr/local/
+texlive/2015/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></usr/local/texlive/201
+5/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2015/texmf-dis
+t/fonts/type1/public/lm/lmr5.pfb></usr/local/texlive/2015/texmf-dist/fonts/type
+1/public/lm/lmr7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/
+lmri10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy10.pfb
+></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></usr/loca
+l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on report.pdf (15 pages, 346355 bytes).
 PDF statistics:
- 268 PDF objects out of 1000 (max. 8388607)
- 136 compressed objects within 2 object streams
+ 386 PDF objects out of 1000 (max. 8388607)
+ 176 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
