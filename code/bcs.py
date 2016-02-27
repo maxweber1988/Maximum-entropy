@@ -6,7 +6,7 @@ import time
 
 
 beta = 10.
-Nw = 300
+Nw = 800
 dw = 10./Nw
 m_value = 1./ Nw
 m = np.zeros(Nw) + m_value
@@ -30,14 +30,14 @@ V,sig_vec,U_T = np.linalg.svd(K)
 Sigma = np.diag(sig_vec)
 
 # find important singular values and reduce dimensions accordingly
-s = len(sig_vec[sig_vec>1e-5])
+s = len(sig_vec[sig_vec>1e-13])
 
 U = U_T.T
 U_s = U[:,0:s]
 V_s = V[:,0:s]
 Sigma_s = Sigma[0:s,0:s]
 K_s = np.dot(V_s,np.dot(Sigma_s,U_s.T))
-alpharange = np.array([2.])
+alpharange = np.arange(1.,10.1,.1)
 p_alpha = np.zeros((len(alpharange)))
 A_mat = np.zeros((Nw,len(alpharange)))
 for i in range(len(alpharange)):
@@ -49,17 +49,12 @@ for i in range(len(alpharange)):
 
 	A_est = m * np.exp(np.dot(U_s,u_sol))
 	A_mat[:,i] = A_est
-	p_alpha[i] = calc_p_alpha(A_est,alpha,Cov,G_noisy,K_s,m*dw)
-p_alpha = p_alpha/np.sum(p_alpha)
+	p_alpha[i] = calc_p_alpha(A_est,alpha,Cov,G_noisy,K_s,m)
+p_alpha = p_alpha/(np.sum(p_alpha) * 0.1)
 A_est = np.average(A_mat,axis=1,weights=p_alpha)
 print("p_alpha=",p_alpha)
 plt.figure()
 plt.plot(alpharange,p_alpha)
-plt.figure()
-plt.plot(tau,G_noisy)
-plt.title("G(tau)")
-plt.ylabel("G")
-plt.xlabel("tau")
 plt.figure()
 plt.plot(w,A,label = 'true A')
 plt.plot(w,A_est,'bx',label='estimated A')

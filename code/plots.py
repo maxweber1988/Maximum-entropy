@@ -430,12 +430,12 @@ tau = np.arange(0.,Ntau * dtau,dtau)
 # ax[0].plot(w,A)
 # ax[1].plot(w,A)
 # step = 1.
-# beta = np.arange(.1,5. + step, step)
+# beta = np.arange(.1,30. + step, step)
 # beta = beta[::-1]
 # for i in xrange(len(beta)):
 # 	print(i)
 # 	# find important singular values and reduce dimensions accordingly
-# 	s = len(sig_vec[sig_vec>1e-10])
+# 	s = len(sig_vec[sig_vec>1e-8])
 
 # 	#reduce all matrices to singular space
 # 	U_s = U[:,0:s]
@@ -455,7 +455,8 @@ tau = np.arange(0.,Ntau * dtau,dtau)
 # 	print(u_sol)
 
 # 	A_est = m * np.exp(np.dot(U_s,u_sol))
-# 	ax[0].plot(w,A_est,label='{0}. recursion'.format(i))
+# 	if i % 5 == 0:
+# 		ax[0].plot(w,A_est,label='{0}. recursion'.format(i))
 # ax[0].legend()
 # ax[0].set_ylabel(r'$A(\omega)$')
 # ax[0].set_xlim(0,7)

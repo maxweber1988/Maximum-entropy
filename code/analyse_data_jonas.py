@@ -28,7 +28,7 @@ V,sig_vec,U_T = np.linalg.svd(K)
 Sigma = np.diag(sig_vec)
 
 # find important singular values and reduce dimensions accordingly
-s = len(sig_vec[sig_vec>1e-5])
+s = len(sig_vec[sig_vec>1e-10])
 print(s)
 
 U = U_T.T
@@ -36,8 +36,7 @@ U_s = U[:,0:s]
 V_s = V[:,0:s]
 Sigma_s = Sigma[0:s,0:s]
 K_s = np.dot(V_s,np.dot(Sigma_s,U_s.T))
-alpharange = np.arange(.1,5.1,.1)
-alpharange = np.array([2.6])
+alpharange = np.arange(.5,10.1,.1)
 p_alpha = np.zeros((len(alpharange)))
 A_mat = np.zeros((Nw,len(alpharange)))
 for i in range(len(alpharange)):
@@ -49,8 +48,8 @@ for i in range(len(alpharange)):
 
 	A_est = m * np.exp(np.dot(U_s,u_sol))
 	A_mat[:,i] = A_est
-	p_alpha[i] = calc_p_alpha(A_est,alpha,Cov,G_noisy,K_s,m*dw)
-p_alpha = p_alpha/np.sum(p_alpha)
+	p_alpha[i] = calc_p_alpha(A_est,alpha,Cov,G_noisy,K_s,m)
+p_alpha = p_alpha/(np.sum(p_alpha) * .1)
 A_est = np.average(A_mat,axis=1,weights=p_alpha)
 print("p_alpha=",p_alpha)
 plt.figure()
